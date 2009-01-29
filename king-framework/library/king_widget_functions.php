@@ -19,44 +19,26 @@ Author URI: http://www.blog.mediaprojekte.de
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 include_once 'form.php';
+                                      
 
 /**
 * @desc Output of king widget css and js in admin head area. Is included in every king widget
-* @author Georg Leciejewski
-* @todo UPdate tih new scripts
+* @author Georg Leciejewski         
 */
-function widget_king_admin_head()
-{
-	//$js_dir = str_replace(ABSPATH, get_settings('siteurl').'/', dirname(__FILE__)) . '/js';
-	$js_dir = get_settings('siteurl').'/wp-content/plugins/king-framework/js/';
-	$css_dir = get_settings('siteurl').'/wp-content/plugins/king-framework/css/';
-	if ( strpos($_SERVER['REQUEST_URI'], 'themes.php')  !== false
-		||  strpos($_SERVER['REQUEST_URI'], 'king-framework.php')  !== false  )
-	{ # only include in themes area
-
-		echo '<link rel="stylesheet" href="'. $css_dir.'king_widget.css" type="text/css" media="screen" />'."\n";
-		echo '<script type="text/javascript" src="'.$js_dir.'jquery.js"></script>'."\n";
-		echo '<script type="text/javascript" src="'.$js_dir.'jquery_plugins.js"></script>'."\n";
-		echo '<script type="text/javascript" src="'.$js_dir.'tooltip.js"></script>'."\n";
-		echo '<script type="text/javascript" src="'.$js_dir.'king_widgets.js"></script>'."\n";
-
-		load_plugin_textdomain('widgetKing','/wp-content/plugins/king-framework/lang');
-	}
-	elseif( strpos($_SERVER['REQUEST_URI'], 'post.php')  !== false )
-	{ # only include in post article temp. disabled since incompatibilities
-		# and new methods to add js to head in wp2.1
-//		echo '<link rel="stylesheet" href="'. $css_dir.'king_admin.css" type="text/css" media="screen" />'."\n";
-//		echo '<script type="text/javascript" src="'.$js_dir.'jquery.js"></script>'."\n";
-//		echo '<script type="text/javascript" src="'.$js_dir.'jquery_plugins.js"></script>'."\n";
-//		echo '<script type="text/javascript" src="'.$js_dir.'king_admin.js"></script>'."\n";
-	}
-	if (strpos($_SERVER['REQUEST_URI'], 'plugins.php') !== false) {
-		echo '<script type="text/javascript" src="' . $js_dir . 'prototype-1.4.0.js"></script>'."\n";
-		load_plugin_textdomain('widgetKing','/wp-content/plugins/king-framework/lang');
-	}
+ 
+function widget_admin_head() {
+  #$plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );  
+  $js_dir = get_settings('siteurl').'/wp-content/plugins/king-framework/js/';
+  $css_dir = get_settings('siteurl').'/wp-content/plugins/king-framework/css/';    
+  //add the javascript to widgets admin page                           
+  wp_enqueue_script('king_widget_script', $js_dir.'/king_widget.js', array('jquery'));
+  //add widget css containing tab styles
+  echo '<link rel="stylesheet" href="'.$css_dir.'/king_widget.css" type="text/css" />';     
+  // the translations
+  load_plugin_textdomain('widgetKing','/wp-content/plugins/king-framework/lang');
 
 }
-add_action('admin_head','widget_king_admin_head');
+add_action( "admin_print_scripts-widgets.php", 'widget_admin_head' );
 
 /**
 * @desc Where should a widget be shown on. Echo?s a couple of form fields for the Widget Options panel

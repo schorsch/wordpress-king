@@ -2,9 +2,9 @@
 /*
 Plugin Name: King_Framework
 Plugin URI: http://www.blog.mediaprojekte.de/
-Description: You only need to activate this Plugin for remote version check of the Framework. Contains common Functions, Language, Javascripts used by all King Widgets + King Plugins.
+Description: You dont need to activate this Plugin since it contains common Functions, Language, Javascripts used by all King Widgets + King Plugins.
 Author: Georg Leciejewski
-Version: 0.71
+Version: 0.73
 Author URI: http://www.blog.mediaprojekte.de
 */
 /*  Copyright 2006  georg leciejewski  (email : georg@mediaprojekte.de)
@@ -18,7 +18,7 @@ Author URI: http://www.blog.mediaprojekte.de
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-define("KINGFRAMEWORKVERSION", "072");
+define("KINGFRAMEWORKVERSION", "073");
 require_once(ABSPATH . 'wp-content/plugins/king-framework/library/king_widget_functions.php');
 
 /**
