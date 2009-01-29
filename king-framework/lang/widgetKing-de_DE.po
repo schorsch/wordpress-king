@@ -1,0 +1,859 @@
+# This file is distributed under the same license as the WordPress package.
+# AUTHOR:Georg Leciejewski <georg@mediaprojekte.de> 2006
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: WordPress 2.0\n"
+"POT-Creation-Date: 2006-01-03 09:54+0200\n"
+"PO-Revision-Date: 2006-11-26 18:33+0100\n"
+"Last-Translator: Georg Leciejewski <georg@mediaprojekte.de>\n"
+"Language-Team: Georg Leciejewski <georg@mediaprojekte.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: F:\\Projekte\\online_projekte_georg\\King-Products\\Website-King\\online\\wp-content\\plugins\\king-includes\\lang\n"
+"X-Poedit-SearchPath-0: F:\\Projekte\\online_projekte_georg\\King-Products\\Website-King\\online\\wp-content\\plugins\\king-widgets\\plugins\n"
+"X-Poedit-SearchPath-1: F:\\Projekte\\online_projekte_georg\\King-Products\\Website-King\\online\\wp-content\\plugins\\king-includes\\library\n"
+
+msgid "Basic Features"
+msgstr "Einfache Einstellungen"
+
+msgid "Title"
+msgstr "Men&uuml; Titel"
+
+#, fuzzy
+msgid "The title above your Calendar"
+msgstr "Der &uuml;ber dem Men&uuml; angezeigte Titel"
+
+# ..\/king-calendar.php:177
+msgid "Use Events instead of normal Calendar"
+msgstr "Events Kalendar benutzen"
+
+# ..\/king-calendar.php:178
+msgid "Check this box if you have the eventsCalendar Plugin installed. There can only be one Events Calendar on a Page. Dont forget to set your Events Calendar options"
+msgstr "Wenn gew&auml;hlt wird der Event Kalender angezeigt. Hierf&uuml;r muss der EventCalendar Plugin installiert und aktiviert sein. Vergessen Sie nicht die Optionen f&uuml;r den Events Plugin zu setzen."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-text.php:202
+msgid "Where to show"
+msgstr "Wo wird die Box angezeigt"
+
+msgid "Show only in Category"
+msgstr "Zeige in Kategorie"
+
+# ..\/king-calendar.php:186
+# ..\/king-text.php:173
+msgid "The box is only shown on pages belonging to the given Category"
+msgstr "Die Box wird nur innerhalb der angegebenen Kategorie (in der Liste und im Detail-Artikel-Ansicht) angezeigt."
+
+#, fuzzy
+msgid "Category ID"
+msgstr "Kategorie ID"
+
+# ..\/king-calendar.php:193
+# ..\/king-text.php:187
+msgid "The category (id) in which the box will be shown. You can insert the ID comma seperated 1,2,3"
+msgstr "Die Kategorien(ID) innerhalb welcher die Box angezeigt werden soll. Es k&ouml;nnen mehrere Kategorien mit Komma getrennt angegeben werden. 1,2,3"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-text.php:225
+msgid "Show only on Special Page Area"
+msgstr "Zeige in speziellem Bereich"
+
+# ..\/king-calendar.php:186
+# ..\/king-text.php:173
+msgid "The box is only shown on Area of the following select. Dont use together with following Show-Not-in Area checkbox!"
+msgstr "Die Box wird nur innerhalb des angegebenen Seiten Bereich angezeigt. Nicht zusammen mit dem folgenden Nicht-zeigen-in Schalter benutzen!"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-text.php:232
+msgid "Website Area"
+msgstr "Seiten Bereich"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-text.php:233
+msgid "Select the special Area on the page where the box is to be diplayed on. A full Description on each can be found in the Wordpress Codex -> Conditional_Tags."
+msgstr "W&auml;hle in welchem Bereich die Box angezeigt werden soll. Eine ausf&uuml;hrliche Beschreibung ist im Wordpress Codex unter Conditional Tags zu finden und sollte unbedingt gelesen werden!"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-text.php:241
+msgid "Area ID/Slug/Title"
+msgstr "Bereich ID/URL/Titel"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-text.php:242
+msgid "The ID, Title or Slug of the Page Area(depending on type choosen) the box is to be shown on. You can enter a comma seperated list. Only needed for single, page and category. If left empty the box will appear on all f.ex. single pages. Definitly READ the Wordpress Codex -> Conditional_Tags."
+msgstr "Nur ben&ouml;tigt f&uuml;r page, single oder category. Die Bereiche k&ouml;nnen mit Komma getrennt eingegeben werden. Wenn leer wird die Box z.B. auf allen single Seiten oder Category Listen angezeigt."
+
+# ..\/king-categories.php:363
+# ..\/king-links.php:286
+# ..\/king-pages.php:301
+msgid "Widget HTML"
+msgstr "Widget HTML"
+
+msgid "HTML before widget"
+msgstr "HTML vor der Widget Box"
+
+msgid "HTML which opens this widget. Can be something linke ul with a class, depending on your css and Theme"
+msgstr "HTML Code vor dem Widget. Kann z.B. ul oder li sein mit einer bestimmten css klassen. Kommt ganz auf Ihr Template und Layout an"
+
+msgid "HTML before widget Title"
+msgstr "HTML vor dem Widget Titel"
+
+msgid "HTML before the widget title. Can be something linke strong or h2 with a class, depending on your css and Theme"
+msgstr "HTML vor dem Widget Titel. z.B. h2 oder strong"
+
+msgid "HTML after widget Title"
+msgstr "HTML nach dem Widget Titel"
+
+#, fuzzy
+msgid "HTML after the widget title but before the text list output. Can be something linke /strong ul or /h2 ul , depending on what you set as before-title"
+msgstr "HTML nach dem Widget Titel aber noch vor der Kategorie Liste. Kann z.b /strong ul oder /h2 ul sein, Je nach CSS und Template"
+
+msgid "HTML after widget"
+msgstr "HTML nach dem Widget"
+
+msgid "HTML which closes this widget. Can be something linke /ul , depending on what you set as HTML before"
+msgstr "HTML nach dem Widget. Es schliesst es ab und variiert je nachdem was sie als vorherige Werte eingegeben haben. Kann z.B. ein schliessendes /ul sein."
+
+# ..\/king-calendar.php:276
+msgid "King Calendar"
+msgstr "King Kalender"
+
+# ..\/king-calendar.php:279
+msgid "How many Calendars would you like?"
+msgstr "Wie viele Kalender sollen angezeigt werden? "
+
+# ..\/king-calendar.php:284
+msgid "If using Multiple Calendars show only one on a site by using the Category Option. This makes sence if you have Events installed  and want to show the Events Calendar on a special Category."
+msgstr "Wenn Sie mehrere Kalender benutzen, sollten Sie nur einen pro Seite anzeigen. Sie haben dazu die M&ouml;glichkeit eine Kategorie zu bestimmen auf der der jeweilige Kalender angezeigt wird. Das mach Sinn wenn Sie den EventsCalendar Plugin benutzen und diesen zum Beispiel nur in der Terminkategorie anzeigen wollen.  "
+
+#, fuzzy
+msgid "Categories"
+msgstr "Leere Kategorien verstecken"
+
+msgid "The title above your category menu"
+msgstr "Der &uuml;ber dem Men&uuml; angezeigte Titel"
+
+msgid "Show post counts"
+msgstr "Zeige Anzahl der enthaltenen Artikel"
+
+msgid "Show number of posts in category"
+msgstr "Zeigt die Anzahl der in der Kategorie enthaltenen Artikel neben dem Kategorienamen"
+
+msgid "Show hierarchical"
+msgstr "Menu hierarchisch anzeigen"
+
+msgid "Shows Categories hierarchical with sub-categories indented -> Depending on your CSS"
+msgstr "Zeigt Unterkategorien einger&uuml;ckt an. Der Stil kann im CSS eingestellt werden. Funktioniert nur mit Listenanzeige eingeschaltet"
+
+msgid "Show Children"
+msgstr "Zeige Unter-Kategorien"
+
+msgid "Show the children of the categories or just the top level categories."
+msgstr "Wenn gesetzt werden alle Unter-Kategorien angezeigt."
+
+msgid "Hide Empty Categories"
+msgstr "Leere Kategorien verstecken"
+
+msgid "Categories without articles are not shown."
+msgstr "Kategorien ohne Artikel werden nicht angezeigt."
+
+msgid "Sort by"
+msgstr "Sortiere nach"
+
+msgid "Sort order"
+msgstr "Reihenfolge"
+
+msgid "Sort Categories ascending or descending depending on choosen sort column."
+msgstr "Sortier-Reihenfolge der Kategorien asc->aufsteigend oder desc->absteigend"
+
+#, fuzzy
+msgid "Show as List (li)"
+msgstr "Zeige als Liste (ul/li)"
+
+msgid "Sets whether the Categories are enclosed by list points ->li"
+msgstr "Die Kategorien werden von Listenpunkten -> li umschlossen. Je nach Template sind weitere Anpassungen n&ouml;ting"
+
+msgid "Advanced Features"
+msgstr "Erweiterte Einstellungen"
+
+msgid "Date of the last post"
+msgstr "Zeige Datum des letzten Artikels"
+
+msgid "Sets whether to display the date of the last post in each Category."
+msgstr "Wenn gesetzt wird das Datum des letzten Artikels neben der Kategorie angezeigt."
+
+msgid "Use Description as Title"
+msgstr "Zeige Beschreibung im Titel-Tag"
+
+msgid "Sets whether to display the Category Description in the links title tag."
+msgstr "Wenn gesetzt wird die Kategorie Beschreibung im Titel-Tag des Links angezeigt."
+
+msgid "Show Children of Category"
+msgstr "Zeige nur Unterkategorien von (id)"
+
+msgid "Show only children of the category id given. All other top level categories will disappear."
+msgstr "Zeigt nur die Unterkategorien der Kategorie (ID). Es werden keine anderen Top Level Kategorien angezeigt. Nur eine ID eingeben!"
+
+msgid "File to show Category on"
+msgstr "Datei zur Kategorie-Anzeige"
+
+msgid "The php file a Category link is to be displayed on. Defaults to index.php."
+msgstr "Die php Datei die nach Klicken der Kategorie Links aufgerufen wird. Wenn leer dann wird die index.php aufgerufen"
+
+msgid "Show Category Feed Text"
+msgstr "RSS Text"
+
+msgid "Text to display for the link to each Categorys RSS2 feed. Default is no text, and no feed displayed."
+msgstr "Der Text der neben der Kategorie angezeigt wird und auf den RSS-Feed der Kategorie verlinkt."
+
+msgid "Show Category Feed Image"
+msgstr "RSS Bild"
+
+msgid "URL Path/filename for a graphic to act as a link to each Categories RSS2 feed.Overrides the feed parameter."
+msgstr "URL bzw. Pfad zu einem Bild welches mit dem RSS Feed einer Kategorie verlinkt ist. Wenn gesetzt wird der RSS Text ausgeschaltet."
+
+msgid "Exclude Categories (1,2,3)"
+msgstr "Kategorien ausschliessen (1,2,3)"
+
+msgid "Sets the Categories to be excluded. This must be in the form of an array (ex: 1, 2, 3)."
+msgstr "Die Kategorien mit den IDs werden nicht in der Liste angezeigt. Diese m&uuml;ssen durch Komma getrennt werden."
+
+msgid "Insert default Options"
+msgstr "Standard Optionen setzen"
+
+msgid "Set Menu Options to Wordpress Defaults"
+msgstr "Setzt die Men&uuml; Optionen auf Wordpress Standard Einstellungen zur&uuml;ck. Sollte am Anfang eingestellt werden. Danach kann die Spielerei losgehen"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-links.php:387
+msgid "Copy Settings from Widget No."
+msgstr "Kopiere Einstellungen von Widget Nr. "
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-links.php:388
+msgid "Choose a Widget Number from which you want to copy the settings into this one. Make sure to choose the right widget, with some Options in it!"
+msgstr "W&auml;hlen Sie eine Widgetnummer aus, von welcher die Einstellungen in dieses Widget &uuml;bernommen werden sollen. Bitte ein Widget w&auml;hlen welches schon Optionen hat."
+
+msgid "HTML after the widget title but before the category list output. Can be something linke /strong ul or /h2 ul , depending on what you set as before-title"
+msgstr "HTML nach dem Widget Titel aber noch vor der Kategorie Liste. Kann z.b /strong ul oder /h2 ul sein, Je nach CSS und Template"
+
+msgid "Show Debug Output"
+msgstr "Debugging Ausgaben anzeigen"
+
+msgid "Shows all set options in Frontend to check what you have entered. The list_cats() is pretty bitchy so you might want to know whats going on."
+msgstr "Zeigt alle gesetzten Optionen im Frontend. Der list_cats() Aufruf kann schon mal ziemlich abnerven und so siehst du was abgeht."
+
+msgid "Use Foldable Navigation"
+msgstr "Aufklapp Men&uuml; benutzen"
+
+msgid "If you have the Fold Category List Plugin installed you can set this option to use the wswwpx_list_cats call."
+msgstr "Wenn Sie den Foldable-Category-List Plugin aktiviert haben, wird der dieser zum Darstellen der Kategorieliste benutzt(wswwpx_list_cats). Der Plugin erlaubt eine bessere Formatierung und ein dynamisches Aufklappen der Kategorie Liste "
+
+#, fuzzy
+msgid "King Category Menu"
+msgstr "King Kategorie Men&uuml;"
+
+# ..\/king-categories.php:457
+msgid "How many Category Menus would you like?"
+msgstr "Wie viele Kategoriemen&uuml;s sollen angezeigt werden? "
+
+#, fuzzy
+msgid "Your Link Options are:"
+msgstr "Ihre Einstellungen sind:"
+
+msgid "Link Category ID"
+msgstr "Link Kategorie ID"
+
+# ..\/king-links.php:187
+msgid "Show only Links belonging to this category.Defaults to -1 (show all links)"
+msgstr "Zeige nur Links die zu der Kategorie ID geh&ouml;ren. Die Id der Link-Kategorien finden Sie im Link Kategorie Manager."
+
+# ..\/king-links.php:195
+msgid "Use Options from Linkmanager"
+msgstr "Benutze Link Manager Optionen"
+
+# ..\/king-links.php:196
+msgid "When set you only need to provide the Link Category ID! It takes all the Links options from the Links Manager. Dont forget to set the widget HTML. Internally this uses the wp_get_links() Method"
+msgstr "Die im Link Manager gesetzten Optionen zur Anzeige, werden &uuml;bernommen. Sie brauchen nur die Linkkategorie ID angeben und k&ouml;nnen die anderen Einstellungen vernachl&auml;ssigen... Ausser den Widget HTML Einstellungen, da diese die Linkliste umschliessen!"
+
+# ..\/king-links.php:203
+msgid "Limit Shown Links"
+msgstr "Limitiere Link Anzeige"
+
+# ..\/king-links.php:204
+msgid "Show only this Number of Links inside the box. -1 stands for show all. But you can also leave this field empty."
+msgstr "Anzahl der Links in der Box. -1 zeigt alle Link an. Sie k&ouml;nnen das Feld aber auch leer lassen."
+
+# ..\/king-links.php:213
+msgid "Show Link Images"
+msgstr "Zeige Link Bilder"
+
+# ..\/king-links.php:214
+msgid "If there are Images associated with a Link, show them"
+msgstr "Falls Bilder zu einem Link existieren, werden diese in der Liste mit angezeigt."
+
+# ..\/king-links.php:222
+msgid "The _ underscore means sorting in reverse order. owner->User who added link through Links Manager./ Rand-> Random / rel-> Link relationship (XFN) / length -> The length of the link name, shortest to longest."
+msgstr "Der _Unterstrich bedeutet eine Sortierung in umgekehrter Reihenfolge. Die Felder:  owner->Benutzer der den Link eingefügt hat / rand ->zuf&auml;llige Reihenfolge / rel-> XFN Beziehungen / length-> L&auml;nge des Link Titel"
+
+# ..\/king-links.php:230
+msgid "Link Description"
+msgstr "Link Beschreibung"
+
+# ..\/king-links.php:231
+msgid "Show the Link Descriptions"
+msgstr "Zeige die Link Beschreibung"
+
+# ..\/king-links.php:237
+msgid "Rating"
+msgstr "Bewertung"
+
+# ..\/king-links.php:238
+msgid "Show the Link Rating"
+msgstr "Zeige die Bewertung eines Links"
+
+# ..\/king-links.php:247
+msgid "Before Link"
+msgstr "Vor dem Link"
+
+# ..\/king-links.php:248
+msgid "HTML bevor a Link in the List"
+msgstr "HTML vor einem Link in der Liste"
+
+# ..\/king-links.php:257
+msgid "After Link"
+msgstr "Nach dem Link"
+
+#, fuzzy
+msgid "HTML after a Link in the List"
+msgstr "HTML nach dem Widget Titel"
+
+# ..\/king-links.php:266
+msgid "Between Link"
+msgstr "Zwischen dem Link"
+
+# ..\/king-links.php:267
+msgid "Text to place between each link/image and its description. Defaults to a space"
+msgstr "HTML oder Text der zwischen dem Link und wenn vorhanden Bild oder Beschreibung steht."
+
+msgid "Show if in Category (List/Article)"
+msgstr "Zeige nur in Kategorie (Liste/Artikel)"
+
+#, fuzzy
+msgid "Shows all set options in Frontend to check what you have entered."
+msgstr "Zeigt alle gesetzten Optionen im Frontend. Der list_cats() Aufruf kann schon mal ziemlich abnerven und so siehst du was abgeht."
+
+# ..\/king-links.php:371
+msgid "King Link Menu"
+msgstr "King Link Widgets"
+
+# ..\/king-links.php:374
+msgid "How many Link Boxes would you like?"
+msgstr "Wie viele Link Widgets sollen angezeigt werden? "
+
+#, fuzzy
+msgid "The title above your Login Widget"
+msgstr "Der &uuml;ber dem Men&uuml; angezeigte Titel"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:187
+msgid "Login Redirect URL"
+msgstr "URL Umleitung nach Login"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:188
+msgid "The URL where the User will be redirected to after logged on. If empty the user will be redirected to the page he logged in from. You maybe want to set this to your Backoffice URL or any other special Page. Just copy the URL from your Browser in here."
+msgstr "Die URL zu welcher der Benutzer nach dem Anmelden umgeleitet werden soll. Wenn leer, bleibt der Benutzer auf der Seite von welcher er sich angemeldet hat. Sie k&ouml;nnen z.B. die URL f&uuml;r die Admin Startseite eingeben. Daf&uuml;r die gesamte URL hier reinkopieren.  "
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:195
+msgid "Show New Post Link"
+msgstr "Zeige Artikel schreiben Link"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:196
+msgid "A link which brings you in the admin area to post a new article."
+msgstr "Das Widget zeigt einen Link zum Neuen Artikel schreiben an. Nach dem Klick wird der benutzer in den Adminbereich zum Anlegen des neuen Artikels geleitet."
+
+#, fuzzy
+msgid "Show Link to My Articles"
+msgstr "Zeige nur in Kategorie (Liste/Artikel)"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:234
+msgid "A javascript slider function for the Box is available. ONLY for advanced Users!<br> You have use the widget custom html fields and wrap your Widget in a div or li with an id set to id=&quot;login1&quot; . The number must be the same like the widget number. Then you must add the on-click toggle effect to f.ex. the widgets h2: &lt; h2 onClick=&quot;loginslide1.toggle();&quot; &gt; <br>If this ins not set it will not work.<br> Look into your Sourcecode or functions.php to get your default HTML and extend it like the description above says."
+msgstr ""
+
+# ..\/king-links.php:238
+#, fuzzy
+msgid "Show Logout Link"
+msgstr "Zeige die Bewertung eines Links"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:202
+msgid "A link which Logs You out. Only shown when logged in of course."
+msgstr "Der Abmelde Link wird nur agezeigt wenn der Benutzer bereits angemeldet ist."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:247
+msgid "Use Slide Open Box"
+msgstr ""
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:248
+msgid "A javascript slider function for the Box is available. ONLY Use when you know what you are doing...or pay me to do it right!<br> You have use the widget custom html fields and wrap your Widget Content in a div or li with an id set to id=&quot;login1&quot; . The number must be the same like the widget number. Then you must add the on-click toggle effect to f.ex. the widgets h2: &lt; h2 onClick=&quot;loginslide1.toggle();&quot; &gt; <br>If this ins not set it will not work"
+msgstr "Es wird eine Auf-/Zuklappen -Javascript Funktion verf&uuml;gbar. Wenn Sie das hier nicht verstehen nicht benutzen! <br> Wenn gesetzt muss der Widgetinhalt &uuml;ber die HTML-Felder mit einem HTML Element div/li oder p mit der  id=&quot;login1&quot;  umgeben werden. Die Nummer muss dieselbe sein wie die Widgetnummer.<br />Dann muss noch ein Element den onClick Event erhalten.  Das kann z.B. der Widget H2 Titel sein: &lt; h2 onClick=&quot;loginslide1.toggle();&quot; &gt; <br />Sie k&ouml;nnen in der functions.php oder im Quellcode den widget html code nachsehen und diesen wie beschrieben  erweitern."
+
+# ..\/king-links.php:371
+#, fuzzy
+msgid "King Login"
+msgstr "King Link Widgets"
+
+# ..\/widgets.php:1024
+#, fuzzy
+msgid "How many Login Widgets do you need?"
+msgstr "How many RSS widgets would you like?"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:332
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:337
+msgid "Login"
+msgstr "Anmelden"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:334
+msgid "Password"
+msgstr "Passwort"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:346
+#, php-format
+msgid "Howdy, <strong>%s</strong>."
+msgstr "Hallo: <strong>%s</strong>"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:351
+msgid "Write Post"
+msgstr "Artikel schreiben"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:393
+msgid "My Articles"
+msgstr "Meine Artikel"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-login.php:354
+msgid "Logout"
+msgstr "Abmelden"
+
+#, fuzzy
+msgid "The title above your pages menu"
+msgstr "Der &uuml;ber dem Men&uuml; angezeigte Titel"
+
+# ..\/king-pages.php:178
+msgid "List Child Pages of (ID)"
+msgstr "Zeige nur Unterseiten von Seite mit ID"
+
+# ..\/king-pages.php:179
+msgid "Show only subpages of the given PagesID"
+msgstr "Es werden nur Unterseiten der Seite mit der angegebenen ID angezeigt. Die ID einer Seite kan man in der Seitenverwaltung einsehen, am Anfang der Liste."
+
+# ..\/king-pages.php:189
+msgid "Sort Pages by choosen sort column."
+msgstr "Sortiere Seiten nach"
+
+# ..\/king-pages.php:205
+msgid "Exlude Pages with (ID)"
+msgstr "Seiten ausschliessen (ID)"
+
+# ..\/king-pages.php:206
+msgid "Comma separated list of Page numeric IDs to be excluded from the list (example:10, 20, 30)"
+msgstr "Komma getrennte Liste der Seiten IDs die nicht angezeigt werden sollen. Beispiel 1, 20, 3"
+
+# ..\/king-pages.php:214
+msgid "Show till Sub-Level"
+msgstr "Anzeige-Tiefe"
+
+# ..\/king-pages.php:215
+msgid "Numeric value for how many levels of hierarchy (sub-pages) to display. Defaults to 0 (display all pages)"
+msgstr "Bestimmt bis zu welcher Tiefe Unterseiten angezeigt werden. So l&auml;sst sich die Navigation &uuml;bersichtlicher halten. Standardwert ist  0, d.h. es werden alle Seiten mit Ihren Unterseiten angezeigt."
+
+#, fuzzy
+msgid "Use Foldable Pages Navigation"
+msgstr "Aufklapp Men&uuml; benutzen"
+
+#, fuzzy
+msgid "If you have the Fold Pages List Plugin installed you can set this option to use the wswwpx_fold_page_list() call."
+msgstr "Wenn Sie den Foldable-Category-List Plugin aktiviert haben, wird der dieser zum Darstellen der Kategorieliste benutzt(wswwpx_list_cats). Der Plugin erlaubt eine bessere Formatierung und ein dynamisches Aufklappen der Kategorie Liste "
+
+# ..\/king-pages.php:253
+msgid "Show Date"
+msgstr "Zeige Datum"
+
+# ..\/king-pages.php:254
+msgid "Display creation or last modified date next to each Page. if Empty -> Display no date. modified -> Display the date last modified. post_date -> Date Page was first created."
+msgstr "Zeigt das Datum neben den Seiten an. Wenn leer-> es wird ken Datum angezeigt / modified -> &Auml;nderungsdatum  /  post_date -> Erstellungsdatum"
+
+# ..\/king-pages.php:261
+msgid "Format of date to display"
+msgstr "Datumsformat"
+
+# ..\/king-pages.php:262
+msgid "Defaults to the date format configured in your WordPress options. Custom values need to be in php Time Format. You can google on that..can you?"
+msgstr "Benutzt als Standard das Wordpress-Datumsformat. Sie k&ouml;nnen diesen Wert f&uuml;r die Seitenliste anpassen. Es muss im php Time format angegeben werden .. keine Ahnung was das ist ? .. Einfach mal googeln!"
+
+# ..\/king-pages.php:351
+msgid "King Pages Menu"
+msgstr "King Seiten Men&uuml;s"
+
+# ..\/king-pages.php:354
+msgid "How many Pages Menus would you like? "
+msgstr "Wie viele \"statische\" Seiten Men&uuml;s sollen angezeigt werden? "
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:188
+msgid "The Feed URL"
+msgstr "RSS Feed Adresse/URL"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:189
+msgid "Insert your rss Feed URL."
+msgstr "Geben Sie die vollst&auml;ndige RSS/Atom Feed Adresse ein."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-text.php:202
+#, fuzzy
+msgid "Feed Items to show"
+msgstr "Wo wird die Box angezeigt"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:198
+msgid "How many Articles or Items do you want to show from the Feed. Of course this is a numeric Value!"
+msgstr "Welche Anzahl von Feed Eintr&auml;gen soll angezeigt werden. Typischerweise zwischen 1  und 20, kommt darauf an wie viele  Eintr&auml;ge der Feed bietet."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:206
+msgid "Show only the first No. Letters "
+msgstr "L&auml;nge des Artikel Text"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:207
+msgid "How much of the Feed Article Text should be shown? Of course this is a numeric Value! f.ex. Set to 100 to show the first 100 letters."
+msgstr "Wie lang soll der Auszug aus dem Artikeltext sein z.B.  100 Zeichen Sobald ein Wert gesetzt ist, wird alles HTML aus dem Artikeltext gefiltert."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:215
+msgid "Dateformat (php time)"
+msgstr "Datumsformat"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:216
+msgid "Enter the date  in php time() format. If left empty none is shown. You can check this f.ex. in your blog settings. or juggle with j F Y, g:i a"
+msgstr "Das Artikeldatum im php time format. Wenn leer wird kein Datum angezeigt. Die Formatierung k&ouml;nnen Sie in Ihren Wordpress Einstellungen abschauen, Google bem&uuml;hen oder einfach es mit : d.m.Y versuchen."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:224
+msgid "Error Message"
+msgstr "Fehler Meldung"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:225
+msgid "The error Message shown if the feed cant be fetched"
+msgstr "Die Meldung wird angezeigt wenn der Feed nicht angezeigt werden kann."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:233
+msgid "Strip Ads"
+msgstr "Werbung filtern"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:234
+msgid "Strip out Feed-Ads from Google/Pheedo/Doubleclicks."
+msgstr "Werbung z.B. von Google / Doubleklick/Pheedo wird aus dem Feed herausgefiltert"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:240
+msgid "Clear local Feed Cache"
+msgstr "Lokalen Cache leeren"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:241
+msgid "If checked FeedCache will be cleared. Save the Widget again after setting this switch. So the cache clearing will be disabled again!"
+msgstr "Der Cache des Feeds wird gelöscht und neu erstellt. nach dem Aktivieren muss das Widget erneut gespeichert werden, damit der Schalter zurückgesetzt wird! Also aktivieren, dann im Frontend neu laden und dann das Widget nochmals speichern! "
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:248
+msgid "Set all Widget Options to (hopefully failsave) Defaults. You should definitly try out some more of the HTML Placeholders for the RSS"
+msgstr "Setzt alle Optionen auf (hoffentlich) einfache standart Einstellungen zur&uuml;ck."
+
+msgid "Internal Widget Title"
+msgstr "Interner Widget Titel"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:259
+msgid "The title inside this widget admin page. Is shown next to the widgets name, if you applied my Widget Title Hack -> try to google on that. Or search the MP:Blog"
+msgstr "Interner Title auf dem Widget. Wird nur angezeigt wenn Sie meinen Widget Titel Hack benutzen. Sie k&ouml;nnen den &uuml;ber Google oder in im MP:Blog finden.<br /> Ist eigentlich nur sinnvoll wenn Sie viele Widgets haben und vor B&auml;umen den Wald nicht mehr sehen."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:264
+msgid "RSS Title and Items HTML"
+msgstr "RSS Titel und Listen HTML"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:269
+msgid "RSS Title HTML Template"
+msgstr "RSS Titel HTML Template"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:270
+msgid "The HTML that will be used to format the RSS-Title output. There are several Placeholders wich can be used. <br />%link% - Link to Website <br />%title% - RSS Title<br />%descr% - RSS Description<br />%rssurl% - Feed URL<br />%rssicon% - RSS Icon <br />%feedimg% - Feed Image if provided by Feed."
+msgstr "HTML zum Formatieren des Feed Titles. Es k&ouml;nnen diverse Platzhalter benutzt werden:<br />%link% - Link zur Webseite <br />%title% - RSS Titel<br />%descr% - RSS Beschreibung<br />%rssurl% - Feed URL Adresse<br />%rssicon% - RSS Icon <br />%feedimg% - Feed Bild falls vorhanden im Feed."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:278
+msgid "RSS Item formatting HTML Template"
+msgstr "RSS Feed Artikel HTML Template"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-rss.php:279
+msgid "The HTML that will be used to format each Item of the RSS output. There are several Placeholders wich can be used: <br />%title% - Item Title<br />%date% - Item Date<br />%link% - Link to Item Title<br />%text% - Item Text<br />%category% - Item Categories if provided delimited by | <br />%author% - Item Author if provided"
+msgstr "Vorlage f&uuml;r einen einzelnen RSS Artikel. Verf&uuml;gbare Platzhalter sind: <br />%title% - Artikel Titel<br />%date% - Artikel Datum<br />%link% - Link zum Artikel<br />%text% - Artikel Text<br />%category% - Artikel Kategorien falls vorhanden getrennt durch | <br />%author% - Artikel Author falls vorhanden"
+
+# ..\/king-text.php:264
+#, fuzzy
+msgid "King RSS Boxes"
+msgstr "King Text Widgets"
+
+# ..\/king-text.php:267
+#, fuzzy
+msgid "How many RSS Boxes would you like? "
+msgstr "Wie viele Text Widgets sollen angezeigt werden? "
+
+#, fuzzy
+msgid "Search only category:"
+msgstr "Zeige nur Unterkategorien von (id)"
+
+# ..\/widgets.php:30
+#, fuzzy
+msgid "Search"
+msgstr "Sidebar"
+
+msgid "Search only in category:"
+msgstr "Suche nur in Kategorie"
+
+#, fuzzy
+msgid "The title above your search"
+msgstr "Der &uuml;ber dem Men&uuml; angezeigte Titel"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-search.php:232
+msgid "Use Search Suggestion"
+msgstr "Zeige Suchworthilfe"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-search.php:233
+msgid "Check this box for Search Word-Suggestions. Makes a spellcheck and looks up the right word."
+msgstr "Das Suchwort wird auf Rechtschreibung geprüft und es wird versucht eine alternatives Such-Wort zu finden."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-search.php:239
+msgid "Use Category Search"
+msgstr "Zeige Kategorie Suche"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-search.php:240
+msgid "A dropdown containing all your categories. Searches only in the choosen Category."
+msgstr "Zeigt ein Aufklappmen&uuml; mit allen Kategorien. Die Suche findet dann nur in der gew&auml;hlten Kategorie statt."
+
+# ..\/king-calendar.php:276
+#, fuzzy
+msgid "King search"
+msgstr "King Kalender"
+
+# ..\/king-calendar.php:279
+#, fuzzy
+msgid "How many searchs would you like?"
+msgstr "Wie viele Kalender sollen angezeigt werden? "
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-search.php:398
+msgid "Do you want to search for:"
+msgstr "Versuchen Sie es doch auch mit:"
+
+#, fuzzy
+msgid "The title above your text menu"
+msgstr "Der &uuml;ber dem Men&uuml; angezeigte Titel"
+
+# ..\/king-text.php:179
+msgid "Use PHP in Text"
+msgstr "PHP im Text zulassen"
+
+# ..\/king-text.php:180
+msgid "If checked the inserted code is evaluated as php.PHP Code MUST be enclosed in &lt;?php and ?&gt; tags! You can also insert Wordpress Code if you have not found a Widget for it yet."
+msgstr "Sie k&ouml;nnen php Code in dem Textfeld benutzen und dieser wird ausge&uuml;hrt. Sie k&ouml;nnen z.B. auch Wordpress Code eingeben zu dem es bisher kein Widget gibt. "
+
+# ..\/king-categories.php:363
+# ..\/king-links.php:286
+# ..\/king-pages.php:301
+#, fuzzy
+msgid "Text or HTML"
+msgstr "Widget HTML"
+
+# ..\/king-text.php:163
+msgid "Insert your Text Freely. This can be bannercode, images or whatever you like. The HTML gets stripped if you do not have the right to insert unfiltered html."
+msgstr "Sie k&ouml;nnen frei Ihre Texte, HTML oder PHP-Code eingeben. Das kann zum Bespiel Bannercode oder Links zu Bildern sein. Wenn Sie nicht das Recht f&uuml;r ungefiltertes HTML besitzen, wird der HTML Code von Wordpress gefiltert."
+
+# ..\/king-text.php:264
+msgid "King Text Boxes"
+msgstr "King Text Widgets"
+
+# ..\/king-text.php:267
+msgid "How many Text Boxes would you like? "
+msgstr "Wie viele Text Widgets sollen angezeigt werden? "
+
+# ..\/widgets.php:30
+msgid "Sidebar"
+msgstr "Sidebar"
+
+# ..\/widgets.php:51
+#, php-format
+msgid "Sidebar %d"
+msgstr "Sidebar %d"
+
+# ..\/king_widgets.php:484
+# ..\/widgets.php:484
+msgid "About Dynamic Sidebars"
+msgstr "About Dynamic Sidebars"
+
+# ..\/king_widgets.php:485
+# ..\/widgets.php:485
+msgid "You can modify your theme's sidebar, rearranging and configuring widgets right in this screen! Well, you could if you had a compatible theme. You're seeing this message because your theme isn't ready for widgets. <a href='http://andy.wordpress.com/widgets/get-ready'>Get it ready!</a>"
+msgstr "You can modify your theme's sidebar, rearranging and configuring widgets right in this screen! Well, you could if you had a compatible theme. You're seeing this message because your theme isn't ready for widgets. <a href='http://andy.wordpress.com/widgets/get-ready'>Get it ready!</a>"
+
+# ..\/widgets.php:544
+#, php-format
+msgid "Sidebar Updated. <a href=\"%s\">View site &raquo;</a>"
+msgstr "Sidebar wurde aktualisiert<a href=\"%s\">View site &raquo;</a>"
+
+# ..\/king_widgets.php:548
+# ..\/widgets.php:548
+msgid "Sidebar Arrangement"
+msgstr "Sidebar Arrangement"
+
+# ..\/king_widgets.php:549
+# ..\/widgets.php:549
+msgid "You can drag and drop widgets into your sidebar below."
+msgstr "You can drag and drop widgets into your sidebar below."
+
+# ..\/king_widgets.php:554
+# ..\/widgets.php:554
+msgid "Available Widgets"
+msgstr "Verf&uuml;gbare Widgets"
+
+# ..\/widgets.php:30
+#, fuzzy
+msgid "Default Sidebar"
+msgstr "Sidebar"
+
+# ..\/king_widgets.php:561
+# ..\/widgets.php:561
+msgid "Your theme will display its usual sidebar when this box is empty. Dragging widgets into this box will replace the usual sidebar with your customized sidebar."
+msgstr "Solange keine Widgets den Sidebars zugeordnet sind wird der originale Sidebar angezeigt."
+
+# ..\/king_widgets.php:579
+# ..\/widgets.php:579
+msgid "Save changes"
+msgstr "&Auml;nderungen speichern"
+
+# ..\/widgets.php:605
+msgid "Configure"
+msgstr "Einstellungen"
+
+# ..\/king-pages.php:45
+# ..\/king-pages.php:119
+# ..\/widgets.php:623
+msgid "Pages"
+msgstr "Seiten"
+
+#, fuzzy
+msgid "Title:"
+msgstr "Men&uuml; Titel"
+
+# ..\/widgets.php:665
+msgid "Archives"
+msgstr "Archive"
+
+# ..\/widgets.php:695
+msgid "Meta"
+msgstr "Meta"
+
+# ..\/widgets.php:702
+msgid "Syndicate this site using RSS 2.0"
+msgstr "Syndicate this site using RSS 2.0"
+
+# ..\/widgets.php:702
+msgid "Entries <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+msgstr "<abbr title=\"Really Simple Syndication\">RSS</abbr> Eintr&auml;ge"
+
+# ..\/widgets.php:703
+msgid "The latest comments to all posts in RSS"
+msgstr "Die letzten Kommentare zu allen Artikeln als RSS"
+
+# ..\/widgets.php:703
+msgid "Comments <abbr title=\"Really Simple Syndication\">RSS</abbr>"
+msgstr "<abbr title=\"Really Simple Syndication\">RSS</abbr> Kommentare "
+
+# ..\/widgets.php:704
+msgid "Powered by Wordpress, state-of-the-art semantic personal publishing platform."
+msgstr "Powered by Wordpress, state-of-the-art semantic personal publishing platform."
+
+# ..\/widgets.php:788
+msgid "How many text widgets would you like?"
+msgstr "Wie viele Text Widgets sollen angezeigt werden? "
+
+# ..\/widgets.php:792
+# ..\/widgets.php:1029
+msgid "Save"
+msgstr "Speichern"
+
+# ..\/widgets.php:852
+msgid "Recent Posts"
+msgstr "Recent Posts"
+
+# ..\/widgets.php:872
+msgid "Recent Comments"
+msgstr "Recent Comments"
+
+# ..\/widgets.php:880
+#, php-format
+msgid "%1$s on %2$s"
+msgstr "%1$s on %2$s"
+
+#, fuzzy
+msgid "Untitled"
+msgstr "Men&uuml; Titel"
+
+# ..\/widgets.php:998
+msgid "How many items would you like to display?"
+msgstr "Wie viele Punkte sollen angezeigt werden? "
+
+# ..\/widgets.php:1024
+msgid "How many RSS widgets would you like?"
+msgstr "How many RSS widgets would you like?"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:55
+msgid "The box is only shown on pages belonging to the given Category. This Switch can be combined with Show(Not) on Special Area.<br /> This gives you more flexibility. f.ex. You can show a box on the Frontpage and inside a category or show a box in a category and everywhere else but the home-page. "
+msgstr "Die Box wird nur auf Listen und Seiten innerhalb der Kategorie angezeigt. Der Schalter kann mit dem Spezial-Bereichen kombiniert werden. <br />Dadurch ergibt sich eine h&ouml;here Flexibilit&auml;t bei der Anzeige. Sie k&ouml;nnen z.B. eine Box auf der Startseite und nur in einer Kategorie anzeigen. Oder in allen spezial Bereichen ausser der Startseite und nur in einer Kategorie. "
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-widgets\plugins/king-text.php:225
+msgid "DO NOT show on Special Page Area"
+msgstr "Nicht zeigen in speziellem Bereich"
+
+# ..\/king-calendar.php:186
+# ..\/king-text.php:173
+msgid "The box is shown on all Areas BUT the one from the following selectbox or the ID/URL/Title field below. !! Do NOT use together with previous checkbox Show on Site Area !!"
+msgstr "Die Box wird &uuml;berall ausser innerhalb des angegebenen Seiten Bereich angezeigt. Nicht zusammen mit dem vorherigen Zeigen-in Schalter benutzen!"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:162
+msgid "Options Dumper"
+msgstr "Einstellungen Ex-/Import"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:166
+msgid "Current Configuration Code"
+msgstr "aktuelle Einstellungen"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:167
+msgid "Copy this Configuration code into another widget, send it to your friends or paste new config options here."
+msgstr "Sie k&ouml;nnen den Einstellungs-Code in ein anderes Widget vom gleichen Typ kopieren, den Code an eine Freundin senden oder hier die Einstellungen anpassen."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:175
+msgid "Use Config Code for new settings"
+msgstr "Den Code f&uuml;r die Einstellungen benutzen"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:176
+msgid "Your inserted config code will be taken to set the widgets options. <br />!CAREFULL only paste Config Options from SAME WIDGET TYPE! <br />If the text is in the wrong format it can f*** up your Options. In such a case you can empty the field to reset the options."
+msgstr "Der eingef&uuml;gte Code wird f&uuml;r die Widget Essntellungen &uuml;bernommen <br /> ACHTUNG nur Code vom gleichen Widgettyp einf&uuml;gen. Wenn der Text in enem falschen Format ist, kann er das Widget zerschiessen. In einem solchen Fall leere den Code und speichere das Widget erneut."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:194
+msgid "Use JS Slide Open Box"
+msgstr "Benutze Auf/Zu Widget"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:195
+msgid "A Javascript slider function for the Box is available. ONLY Use when you know what you are doing...or pay me to do it right!<br> You have use the widget custom html fields and wrap your Widget Content in a div or li with an id set to id=&quot;cat1&quot; . The number must be the same like the widget number. Then you must add the on-click toggle effect to f.ex. the widgets h2: &lt; h2 onClick=&quot;catslide1.toggle();&quot; &gt; <br>If this ins not set it will not work"
+msgstr "Es wird eine Auf-/Zuklappen -Javascript Funktion verf&uuml;gbar. Wenn Sie das hier nicht verstehen nicht benutzen! <br> Wenn gesetzt muss der Widgetinhalt &uuml;ber die HTML-Felder mit einem HTML Element div/li oder p mit der  id=&quot;cat1&quot;  umgeben werden. Die Nummer muss dieselbe sein wie die Widgetnummer.<br />Dann muss noch ein Element den onClick Event erhalten.  Das kann z.B. der Widget H2 Titel sein: &lt; h2 onClick=&quot;catslide1.toggle();&quot; &gt; <br />Sie k&ouml;nnen in der functions.php oder im Quellcode den widget html code nachsehen und diesen wie beschrieben erweitern."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:200
+msgid "Show JS SlideBox open"
+msgstr "Zeige das Auf/Zu Widget "
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:201
+msgid "If checked the Box will be open on first page load. If empty the Box will be collapsed on first Page load"
+msgstr "Wenn gesetzt wird das Auf/Zu Widget beim ersten Laden der Seite ge&ouml;ffnet angezeigt."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:206
+msgid "JS Sliding Time in ms"
+msgstr "Auf/Zu Zeit in ms"
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:207
+msgid "Time in Milliseconds the Box will take to open or close. Default is 400. Only enter Numbers!"
+msgstr "Zeit in Millisekunden welche das Auf/Zu Widget zum &Ouml;ffnen benötigt."
+
+# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:196
+msgid "new version available"
+msgstr "neue Version verf&uuml;gbar"
+

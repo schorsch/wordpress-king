@@ -1,0 +1,64 @@
+/*
+TAB STYLES for widgets admin:
+Some more styles, not important for making tabs work, just for the look of it...
+*/
+.tabs-hide { display: none;}
+.anchors { list-style: none; margin: 5px 0 0  5px; padding: 0 0 1px;}
+	.anchors:after { display: block; clear: both;  content: " ";}/* clearing without presentational markup, IE gets extra treatment */
+	.anchors li { float: left; margin: 0 1px 0 0;}
+	.anchors a {display:block; position:relative; top:1px; border:1px solid #eaeaea; border-bottom:0; z-index: 2;padding: 2px 9px 1px; color: #000; text-decoration: none;}
+
+		.anchors .on a {padding-bottom:2px; font-weight:bold;}
+		.anchors a:focus,
+		.anchors a:active { outline: none; } /* @ Firefox 1.5, remove ugly dotted border */
+
+		.anchors .on a,
+		.anchors a:hover,
+		.anchors a:focus,
+		.anchors a:active,
+		.anchors .on a:link,
+		.anchors .on a:visited { cursor: text; background:#FFFF99}/* #FFFF99 @ Opera, use pseudo classes otherwise it confuses cursor... */
+
+		.anchors a:hover,
+		.anchors a:focus,
+		.anchors a:active {  cursor: pointer;}
+
+	.fragment { padding: 10px; margin: 0 ; width:400px;; vertical-align:top;}
+		.fragment p{clear:left;}
+		.fragment label{ margin: 3px; text-align:right; display:block; float:left; vertical-align:top; width:180px; }
+		.fragment input{margin: 3px; vertical-align:middle; text-align:left;}
+		.fragment input text{ width:160px;}
+		.fragment textarea{margin: 3px; width:350px; height:100px}
+			.small input {margin: 3px; width:40px; }
+			.big textarea{margin: 3px; width:350px; height:150px}
+			.big input{margin: 3px; width:350px; }
+	#tooltip { border: 1px solid #111; background-color: #FFFF99; padding: 5px; width:300px; font:10px/14px verdana,arial,sans-serif;}
+
+	.controlhandle {cursor: move;background-color: #6da6d1;border-bottom: 2px solid #448abd;color: #333;display: block;margin: 0 0 5px;padding: 4px;font-size: 120%;}
+	.controlcloser {cursor: pointer;font-size: 120%;display: block;position: absolute;top: 2px;right: 8px;padding: 0 3px;font-weight: bold;}
+
+/*.opendiv {float:right;margin:3px 45px; display:inline; text-align:center; height:16px; width:12px; pointer; padding:0 3px 1px; border-top:4px solid #6da6d1; background: url( images/fade-butt.png )00;}
+*/
+
+
+/*.opendiv{float:right; display:inline}*/
+
+.dropzone {	float: left;margin-right: 10px;padding: 5px;border: 1px solid #bbb;background-color: #f0f8ff;}
+	.dropzone h3 {text-align: center;color: #333;}
+	.dropzone ul {list-style-type: none; width: 240px; float:left; margin: 0; padding: 0;}
+	.module {width: 230px; padding: 0 3px; margin: 5px 0;cursor: move;display: block;border: 1px solid #ccc;background-color: #fbfbfb;text-align: left;line-height: 25px;	}
+	* html .module {position: absolute;position: relative;}
+#sbadmin p.submit {padding-right: 10px;clear: left;	}
+	.sbadmin  p{clear: left; margin: 3px 0 3px 0; }
+
+/*.fragment { padding: 10px; margin: 0 0 5px 0;}*/
+
+/* IE stuff
+.anchors { /* auto clear
+    display: inline-block; /* @ IE 7
+    _height: 1%; /* @ IE 6
+}
+.anchors a {
+    float: left;
+}
+

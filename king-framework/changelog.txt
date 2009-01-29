@@ -1,0 +1,148 @@
+Author: 	Georg Leciejewski
+Contact:	georg@mediaprojekte.de
+Package: 	king-includes Widget & Plugin Library for Wordpress
+Comments:	no OO @tm moment, i might do it one day and if its only for namespacing.
+
+
+
+Changelog: King Framework
+
+-----------
+9 Nov 2006
+PHP
+	*.php
+		- renamed some function parameters
+		- beautyfied some code
+JS
+	/js/*
+		- removed all old javascripts
+		- inserted new jQuery lib + plugins 
+
+
+-----------
+24 Sept 2006
+
+PHP
+	form_input_elements.php
+		- renamed the function parameters
+		- set some parameters to be empty if not set so functions can be caleed with less params
+		- refactured some functions so empty params are not shown
+
+Language DE
+	- changed help string for where to show in sitearea inputfield
+
+
+-----------
+03 Sept 2006
+
+PHP
+	king-framework.php
+		- removed freakmode switch
+	king_widget_functions.php
+		- added function for where to show on sitearea. so you can enter a comma seperated list of page titles/ID/Slug
+
+
+Language DE
+	- changed help string for where to show in sitearea inputfield
+
+-----------
+09 July 2006
+
+PHP
+	king-framework.php
+		- added freakmode switch which shows advanced widgets options. kinda hard when normal users see 30 options :-)
+	form_input_elements.php
+		- fixed a bug in  function get_dump_options()
+		- added role dropdownselect
+		- added capabilities dropdownselect
+
+Language DE
+	- added Login-widget language strings
+	- added JS Sliding language strings
+
+-----------
+07 July 2006
+
+PHP
+	form_input_elements.php
+		- fixed a bug in  function get_checkbox()
+
+	king-framework.php
+		- added this file for framework version checking and for the beginning some global widget options
+
+	king_widget_functions.php
+		- added javascript output functions for sliding widgets
+
+Language DE
+	- added Login-widget language strings
+
+
+
+-----------
+22 June 2006
+
+PHP
+	- added function for remote version checking used by all widgets now
+	- added if statements to Admin Javascript includes, so they are only loaded in theme admin
+	- added prototype lib js for version check colouring
+
+Language DE
+	- added one language string
+
+
+-----------
+20 June 2006
+
+PHP
+
+Language
+	- added king-links language strings + fixes
+
+
+-----------
+18 June 2006
+
+PHP
+	RssClass.php
+		- added Class for parsing RSS Feeds
+		- added rss icon
+Language
+	- new king-rss language strings
+
+
+-----------
+10 June 2006
+
+PHP
+	king_widget_functions.php
+		- added 2 new functions to easier build widget admin menus
+Language
+	- new king-search language strings
+
+
+-----------
+07 Mai 2006
+
+PHP
+	form_input_elements.php
+		- killed a spacer before value in textarea
+Language
+	- new king text language strings
+
+-----------
+06 Mai 2006
+
+PHP
+	king_widget_functions.php
+		- killed+added js includes
+	form.php
+		- added new moo accordeon
+CSS
+	- added images folder for background images used by css
+	- killed custom ajax include used for accordion
+	- new styles in css + gloabl overiding original widgets css
+
+Javascript
+	- added moo js + prototype lite
+	- changed sweetTitles.js to only popup inside panelbody
+	-
