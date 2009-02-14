@@ -272,7 +272,7 @@ function widget_king_text_init() {
 		# Widget HTML
 		widget_king_htmloptions('text',$number,$before_widget,$before_widget_title,$after_widget_title,$after_widget);
 
-		echo king_get_hidden("king_text_submit_$number",'1',"king_text_submit_$number");
+		echo king_get_hidden("king_text_submit_$number",'1',"king_text_submit_$number");    
 		echo king_get_tab_end();
 	}
 

@@ -341,7 +341,7 @@ function widget_king_search_init() {
 	*/
 	function widget_king_search_register()
 	{
-		include_once('widgets.php');
+		
 		$options = get_option('widget_king_search');
 		$number = $options['number'];
 		if ( $number < 1 ) $number = 1;

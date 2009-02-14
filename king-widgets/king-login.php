@@ -21,8 +21,7 @@ Author URI: http://www.blog.mediaprojekte.de
 define("KINGLOGINVERSION",  "050");
 
 require_once(ABSPATH . 'wp-content/plugins/king-framework/library/king_widget_functions.php');
-include_once('widgets.php');
-
+                                
 /**
 * @desc init Put functions into one big function we'll call at the plugins_loaded action.
 * This ensures that all required plugin functions are defined.

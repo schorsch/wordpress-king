@@ -17,8 +17,10 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a
  
 jQuery(document).ready(function () {
     //add tabs to our widgets
-    jQuery('div.widget-control').tabs();  
+    jQuery('div.widget-control').tabs(1);  
     //add labels containing help
     jQuery('label').Tooltip(350);
+    //remove tabs markup from controll
+    jQuery('div.widget-control .widget-control-actions').removeClass("tabs-hide");  
 
 });

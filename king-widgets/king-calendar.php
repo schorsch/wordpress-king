@@ -291,8 +291,7 @@ function widget_king_calendar_init() {
 	* @author Georg Leciejewski
 	*/
 	function widget_king_calendar_register()
-	{
-		include_once('widgets.php');
+	{                                  
 		$options = get_option('widget_king_calendar');
 		$number = $options['number'];
 		if ( $number < 1 ) $number = 1;

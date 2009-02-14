@@ -456,7 +456,7 @@ function widget_king_links_init() {
 	*/
 	function widget_king_links_register()
 	{
-	   	include_once('widgets.php');
+	  
 		$options = get_option('widget_king_links');
 		$number = $options['number'];
 		if ( $number < 1 ) $number = 1;

@@ -24,7 +24,7 @@ Author URI: http://www.blog.mediaprojekte.de
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 define("KINGCATEGORIESVERSION",  "101");
-#include_once('widgets.php');
+
 include_once (ABSPATH . 'wp-content/plugins/king-framework/library/form.php');
 require_once(ABSPATH . 'wp-content/plugins/king-framework/library/king_widget_functions.php');
   
@@ -451,7 +451,7 @@ function widget_king_categories_init() {
 	*/
 	function widget_king_categories_register()
 	{
-		#include_once('widgets.php');
+
 		$options = get_option('widget_king_categories');
 		$number = $options['number'];
 		if ( $number < 1 ) $number = 1;

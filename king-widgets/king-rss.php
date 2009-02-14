@@ -145,7 +145,7 @@ function widget_king_rss_init() {
 				$newoptions[$number]['after_widget']		= "</ul></li>";
 			}
 			elseif($_POST["king_rss_copy_$number"] !=='No' && $_POST["king_rss_copy_$number"] != $number)
-			{# doe the copying
+			{# do the copying
 				$copy = $_POST["king_rss_copy_$number"]; #$copyoption
 				$newoptions[$number]['title']				= $options[$copy]['title'];
 				$newoptions[$number]['rss_url'] 			= $options[$copy]['rss_url'];
@@ -172,7 +172,7 @@ function widget_king_rss_init() {
 				$newoptions[$number]['title']				= strip_tags(stripslashes($_POST["king_rss_title_$number"]));
 				$newoptions[$number]['rss_url'] 			= strip_tags(stripslashes($_POST["king_rss_url_$number"]));
 				$newoptions[$number]['max_items'] 			= strip_tags(stripslashes($_POST["king_rss_max_items_$number"]));
-				$newoptions[$number]['cache_time']			= isset($_POST["king_rss_cache_time_$number"]);
+				$newoptions[$number]['cache_time']			= strip_tags(stripslashes($_POST["king_rss_cache_time_$number"]));
 				$newoptions[$number]['nosort']				= isset($_POST["king_rss_nosort_$number"]);
 				$newoptions[$number]['shortdesc']			= $_POST["king_rss_shortdesc_$number"];
 				$newoptions[$number]['showdate']			= $_POST["king_rss_showdate_$number"]; #php time format
@@ -389,8 +389,7 @@ function widget_king_rss_init() {
 	*/
 	function widget_king_rss_register()	{
 		global $kingwidgetversion;
-
-		include_once('widgets.php');
+                                               
 		$options = get_option('widget_king_rss');
 		$number = $options['number'];
 		if ( $number < 1 ) $number = 1;
