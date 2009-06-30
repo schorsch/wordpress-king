@@ -85,15 +85,6 @@ function king_framework_version() {
 	king_version_head('King_Framework',KINGFRAMEWORKVERSION);
 }
 add_action('admin_head','king_framework_version');
-
-add_action( "admin_print_scripts-widgets.php", 'my_admin_scripts' );
- 
-function my_admin_scripts() {
-  $plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );      
-  //add the javascript to widgets admin page                           
-  wp_enqueue_script('king_widget_script', $plugin_url.'/js/king_widget.js', array('jquery'));
-  //add widget css containing tab styles
-  echo '<link rel="stylesheet" href="'.$plugin_url.'/css/king_widget.css" type="text/css" />';       
-}
+  
 
 ?>

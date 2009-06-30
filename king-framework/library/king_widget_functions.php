@@ -31,7 +31,7 @@ function widget_admin_head() {
   $js_dir = get_settings('siteurl').'/wp-content/plugins/king-framework/js/';
   $css_dir = get_settings('siteurl').'/wp-content/plugins/king-framework/css/';    
   //add the javascript to widgets admin page                           
-  wp_enqueue_script('king_widget_script', $js_dir.'/king_widget.js', array('jquery'));
+  wp_enqueue_script('king_widget_script', $js_dir.'king_widget.js', array('jquery'));
   //add widget css containing tab styles
   echo '<link rel="stylesheet" href="'.$css_dir.'/king_widget.css" type="text/css" />';     
   // the translations
