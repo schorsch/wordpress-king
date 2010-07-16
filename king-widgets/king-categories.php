@@ -46,98 +46,98 @@ class WP_Widget_King_Categories extends WP_Widget {
    * @param <type> $args is an array of strings that help widgets to conform to
 		# the active theme: before_widget, before_title, after_widget,
 		# and after_title are the array keys. Default tags: li and h2.
-   * @param <type> $instance
+   * @param <type> $opts
    */
 
-	function widget( $args, $instance ) {
+	function widget( $args, $opts ) {
 		extract( $args );
-		$title = apply_filters('widget_title', empty( $instance['title'] ) ? __( 'Categories' ) : $instance['title'], $instance, $this->id_base);
+		$title = apply_filters('widget_title', empty( $opts['title'] ) ? __( 'Categories' ) : $opts['title'], $opts, $this->id_base);
 
     //take care of some escaped fields
-    $instance['feed_image']         = stripslashes($instance['feed_image']);
-    $instance['before_widget']      = empty($instance['before_widget']) ? $before_widget : stripslashes($instance['before_widget']);
-    $instance['before_widget_title']= empty($instance['before_widget_title']) ? $before_title : stripslashes($instance['before_widget_title']);
-    $instance['after_widget_title'] = empty($instance['after_widget_title'] ) ? $after_title : stripslashes($instance['after_widget_title']) ;
-    $instance['after_widget']       = empty($instance['after_widget']) ? $after_widget : stripslashes($instance['after_widget']) ;
+    $opts['feed_image']         = stripslashes($opts['feed_image']);
+    $opts['before_widget']      = empty($opts['before_widget']) ? $before_widget : stripslashes($opts['before_widget']);
+    $opts['before_widget_title']= empty($opts['before_widget_title']) ? $before_title : stripslashes($opts['before_widget_title']);
+    $opts['after_widget_title'] = empty($opts['after_widget_title'] ) ? $after_title : stripslashes($opts['after_widget_title']) ;
+    $opts['after_widget']       = empty($opts['after_widget']) ? $after_widget : stripslashes($opts['after_widget']) ;
 
-//    print_r($instance);
+//    print_r($opts);
     $already_out = false;
     # These lines generate our output. Widgets can be very complex
     # but as you can see here, they can also be very, very simple.
-    if( !empty($instance['show_category']) ) {
+    if( !empty($opts['show_category']) ) {
       $post = $wp_query->post;
-      if ( king_in_category($instance['cat_ids']) )  {
-        $this->output($instance);
+      if ( king_in_category($opts['cat_ids']) )  {
+        $this->output($opts);
         $already_out = true;
       }
     }
 
     # sitearea Output
-    if( !empty($instance['show_on_site_area']) ) {
-      if ( king_in_site_area($instance['site_area'], $instance['site_area_id']) && !$already_out) {
+    if( !empty($opts['show_on_site_area']) ) {
+      if ( king_in_site_area($opts['site_area'], $opts['site_area_id']) && !$already_out) {
         # in the site area
-        $this->output($instance);
+        $this->output($opts);
       }
-    } elseif(!empty($instance['show_not_on_site_area'])) {
-      if (!king_in_site_area($instance['site_area'], $instance['site_area_id']) && !$already_out ) {
+    } elseif(!empty($opts['show_not_on_site_area'])) {
+      if (!king_in_site_area($opts['site_area'], $opts['site_area_id']) && !$already_out ) {
         #not in the site area
-        $this->output($instance);
+        $this->output($opts);
       }
     }
     # always show
-    if( empty($instance['show_not_on_site_area']) && empty($instance['show_on_site_area']) && empty($instance['show_category']) ) {
-      $this->output($instance);
+    if( empty($opts['show_not_on_site_area']) && empty($opts['show_on_site_area']) && empty($opts['show_category']) ) {
+      $this->output($opts);
     }
 	}
 
   	/** Update a particular instance.
 	 *
-	 * This function should check that $new_instance is set correctly.
-	 * The newly calculated value of $instance should be returned.
+	 * This function should check that $new_opts is set correctly.
+	 * The newly calculated value of $opts should be returned.
 	 * If "false" is returned, the instance won't be saved/updated.
 	 *
-	 * @param array $new_instance New settings for this instance as input by the user via form()
-	 * @param array $old_instance Old settings for this instance
+	 * @param array $new_opts New settings for this instance as input by the user via form()
+	 * @param array $old_opts Old settings for this instance
 	 * @return array Settings to save or bool false to cancel saving
 	 */
-	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
+	function update( $new_opts, $old_opts ) {
+		$opts = $old_opts;
     # use setting from json import if available
-    $new_instance = !empty($new_instance["import"]) ? king_import_json($new_instance["import"]) : $new_instance;       
+    $new_opts = !empty($new_opts["import"]) ? king_import_json($new_opts["import"]) : $new_opts;
     # save new form values
-    $instance['title']              = strip_tags(stripslashes($new_instance["title"]));
-    $instance['orderby']            = $new_instance["orderby"];
-    $instance['order']              = $new_instance["order"];
-    $instance['style']              = isset( $new_instance["style"]) ? 'list': 'none' ;
-    $instance['show_last_update']   = $new_instance["show_last_update"];
-    $instance['show_count']         = $new_instance["show_count"];
-    $instance['hide_empty']         = $new_instance["hide_empty"];
-    $instance['use_desc_for_title']	= $new_instance["use_desc_for_title"];
-    $instance['depth']              = $new_instance["depth"];
-    $instance['child_of']           = strip_tags(stripslashes($new_instance["child_of"]));
-    $instance['feed']               = strip_tags(stripslashes($new_instance["feed"]));
-    $instance['feed_image']         = addslashes($new_instance["feed_image"]);
-    $instance['exclude']            = stripslashes($new_instance["exclude"]);
-    $instance['hierarchical']       = $new_instance["hierarchical"];
-    $instance['before_widget']      = html_entity_decode($new_instance["before_widget"]);
-    $instance['after_widget']       = html_entity_decode($new_instance["after_widget"]);
-    $instance['before_widget_title']  = html_entity_decode($new_instance["before_widget_title"]);
-    $instance['after_widget_title']   = html_entity_decode($new_instance["after_widget_title"]);
+    $opts['title']              = strip_tags(stripslashes($new_opts["title"]));
+    $opts['orderby']            = $new_opts["orderby"];
+    $opts['order']              = $new_opts["order"];
+    $opts['style']              = isset( $new_opts["style"]) ? 'list': 'none' ;
+    $opts['show_last_update']   = $new_opts["show_last_update"];
+    $opts['show_count']         = $new_opts["show_count"];
+    $opts['hide_empty']         = $new_opts["hide_empty"];
+    $opts['use_desc_for_title']	= $new_opts["use_desc_for_title"];
+    $opts['depth']              = $new_opts["depth"];
+    $opts['child_of']           = strip_tags(stripslashes($new_opts["child_of"]));
+    $opts['feed']               = strip_tags(stripslashes($new_opts["feed"]));
+    $opts['feed_image']         = addslashes($new_opts["feed_image"]);
+    $opts['exclude']            = stripslashes($new_opts["exclude"]);
+    $opts['hierarchical']       = $new_opts["hierarchical"];
+    $opts['before_widget']      = html_entity_decode($new_opts["before_widget"]);
+    $opts['after_widget']       = html_entity_decode($new_opts["after_widget"]);
+    $opts['before_widget_title']  = html_entity_decode($new_opts["before_widget_title"]);
+    $opts['after_widget_title']   = html_entity_decode($new_opts["after_widget_title"]);
 
-    $instance['show_category']      = isset($new_instance["show_category"]);
-    $instance['cat_ids']        = $new_instance["cat_ids"];
-    $instance['show_on_site_area']	= $new_instance["show_on_site_area"];
-    $instance['show_not_on_site_area']= $new_instance["show_not_on_site_area"];
-    $instance['site_area']			= $new_instance["site_area"];
-    $instance['site_area_id']		= $new_instance["site_area_id"];
+    $opts['show_category']      = isset($new_opts["show_category"]);
+    $opts['cat_ids']        = $new_opts["cat_ids"];
+    $opts['show_on_site_area']	= $new_opts["show_on_site_area"];
+    $opts['show_not_on_site_area']= $new_opts["show_not_on_site_area"];
+    $opts['site_area']			= $new_opts["site_area"];
+    $opts['site_area_id']		= $new_opts["site_area_id"];
 
-		return $instance;
+		return $opts;
 	} #update
 
-	function form( $instance ) {
-//    echo print_r($instance);
+	function form( $opts ) {
+//    echo print_r($opts);
 		//Defaults
-		$instance = wp_parse_args( (array) $instance, $this->defaults() );
+		$opts = wp_parse_args( (array) $opts, $this->defaults() );
 
     echo '<h3><a href="#">'. __('Basic', 'widgetKing').'</a></h3> <div>';
 		# show title
@@ -146,18 +146,18 @@ class WP_Widget_King_Categories extends WP_Widget {
 				'id' => $this->get_field_id('title'),
 				'descr' 	=> __('Title', 'widgetKing'),
 				'title' 	=> __('The title above your category menu', 'widgetKing'),
-				'val' 		=> esc_html($instance['title']) ));
+				'val' 		=> esc_html($opts['title']) ));
 
 		#sort Column
     echo '<p>';
     echo king_label(  $this->get_field_id('orderby'), __('Sort by', 'widgetKing'),
                       __('Sort Categories ascending or descending depending on choosen sort column.', 'widgetKing') );
     echo '<br/>';
-    echo king_select( $this->get_field_name('orderby'), $instance['orderby'],
+    echo king_select( $this->get_field_name('orderby'), $opts['orderby'],
                       array('name', 'ID', 'count', 'term_group', 'slug'),
                       $this->get_field_id('orderby') );
 
-    echo king_select( $this->get_field_name('order'), $instance['order'],
+    echo king_select( $this->get_field_name('order'), $opts['order'],
                       array('asc', 'desc'), $this->get_field_id('order') );
     echo '</p>';
  		#show category Count
@@ -166,7 +166,7 @@ class WP_Widget_King_Categories extends WP_Widget {
 				'id' => $this->get_field_id('show_count'),
 				'descr' 	=> __('Show post counts', 'widgetKing'),
 				'title' 	=> __('Show number of posts in category', 'widgetKing'),
-				'val' 		=> $instance['show_count'] ));
+				'val' 		=> $opts['show_count'] ));
 		
 		#show empty
 		echo king_checkbox_p(array(
@@ -174,7 +174,7 @@ class WP_Widget_King_Categories extends WP_Widget {
         'id'    => $this->get_field_id('hide_empty'),
 				'descr' 	=> __('Hide Empty Categories', 'widgetKing'),
 				'title' 	=> __('Categories without articles are not shown.', 'widgetKing'),
-				'val' 		=> $instance['hide_empty'] ));
+				'val' 		=> $opts['hide_empty'] ));
 
 		# devider
     echo '</div> <h3><a href="#">'. __('Advanced', 'widgetKing') .'</a></h3> <div>';
@@ -184,7 +184,7 @@ class WP_Widget_King_Categories extends WP_Widget {
       'id'    => $this->get_field_id('exclude'),
 				'descr' 	=> __('Exclude Categories (1,2,3)', 'widgetKing'),
 				'title' 	=> __('Sets the Categories to be excluded. This must be in the form of an array (ex: 1, 2, 3).', 'widgetKing'),
-				'val' 		=> $instance['exclude']));
+				'val' 		=> $opts['exclude']));
 
 		#show child_of
 		echo king_text_p(array(
@@ -192,74 +192,74 @@ class WP_Widget_King_Categories extends WP_Widget {
       'id'    => $this->get_field_id('child_of'),
 				'descr' 	=>__('Show Children of Category', 'widgetKing'),
 				'title' 	=>__('Show only children of this category(id).', 'widgetKing'),
-				'val' 		=> $instance['child_of'] ));
+				'val' 		=> $opts['child_of'] ));
     #show cat depth
 		echo king_text_p(array(
 				'name' => $this->get_field_name('depth'),
         'id'    => $this->get_field_id('depth'),
 				'descr' 	=> __('Category tree depth', 'widgetKing'),
 				'title' 	=>__('Descend to depth(number) into the category tree: 0 = All, -1 = All Flat(no indent), 1 = only top-level, n = number/levels to descend', 'widgetKing'),
-        'val' 		=> $instance['depth'] ));
+        'val' 		=> $opts['depth'] ));
 //		#insert feed text
 		echo king_text_p(array(
       'name' => $this->get_field_name('feed'),
       'id'    => $this->get_field_id('feed'),
       'descr' 	=>__('Show Category Feed Text', 'widgetKing'),
       'title' 	=> __('Text to display for the link to each Categorys RSS2 feed. Default is no text, and no feed displayed.', 'widgetKing'),
-      'val' 		=> $instance['feed']));
+      'val' 		=> $opts['feed']));
 //		#name of feed image  Path/filename
 		echo king_text_p(array(
       'name' => $this->get_field_name('feed_image'),
       'id'    => $this->get_field_id('feed_image'),
       'descr' 	=>__('Show Category Feed Image', 'widgetKing'),
       'title' 	=> __('URL Path/filename for a graphic to act as a link to each Categories RSS2 feed.Overrides the feed parameter.', 'widgetKing'),
-      'val' 		=> $instance['feed_image']));
+      'val' 		=> $opts['feed_image']));
     #show show_last_update
 		echo king_checkbox_p(array(
 				'name' => $this->get_field_name('show_last_update'),
       'id'    => $this->get_field_id('show_last_update'),
 				'descr' 	=>__('Date of the last post', 'widgetKing'),
 				'title' 	=> __('Sets whether to display the date of the last post in each Category.', 'widgetKing'),
-				'val' 		=> $instance['show_last_update'] ));
+				'val' 		=> $opts['show_last_update'] ));
 		#description as title
 		echo king_checkbox_p(array(
 				'name' => $this->get_field_name('use_desc_for_title'),
       'id'    => $this->get_field_id('use_desc_for_title'),
 				'descr' 	=>__('Use Description as Title','widgetKing'),
 				'title' 	=>__('Sets whether to display the Category Description in the links title tag.', 'widgetKing'),
-				'val' 		=> $instance['use_desc_for_title']));	
+				'val' 		=> $opts['use_desc_for_title']));
 		    #list style
 		echo king_checkbox_p(array(
 				'name' => $this->get_field_name('style'),
         'id'    => $this->get_field_id('style'),
 				'descr' 	=> __('Show as List (li)', 'widgetKing'),
 				'title' 	=> __('Sets whether the Categories are enclosed by style points ->li', 'widgetKing'),
-				'val' 		=> $instance['style']));
+				'val' 		=> $opts['style']));
     #show hirachical
 		echo king_checkbox_p(array(
       'name'  => $this->get_field_name('hierarchical'),
       'id'    => $this->get_field_id('hierarchical'),
       'descr' => __('Show hierarchical', 'widgetKing'),
       'title' =>__('Shows Categories hierarchical with sub-categories indented -> Depending on your CSS', 'widgetKing'),
-      'val' 	=> $instance['hierarchical']));
+      'val' 	=> $opts['hierarchical']));
     		
 		#devider
     echo '</div> <h3><a href="#">'. __('Show', 'widgetKing') .'</a></h3> <div>';
 		# Where To Show Options Panel
 		where_to_show_widget($this,
-                        $instance['show_category'],
-                        $instance['cat_ids'],
-                        $instance['show_on_site_area'],
-                        $instance['show_not_on_site_area'],
-                        $instance['site_area'],
-                        $instance['site_area_id'] );
+                        $opts['show_category'],
+                        $opts['cat_ids'],
+                        $opts['show_on_site_area'],
+                        $opts['show_not_on_site_area'],
+                        $opts['site_area'],
+                        $opts['site_area_id'] );
 		# devider
     echo '</div> <h3><a href="#">'. __('HTML', 'widgetKing') .'</a></h3> <div>';
 		widget_king_htmloptions($this, 
-              stripslashes(htmlentities($instance['before_widget'])),
-              stripslashes(htmlentities($instance['before_widget_title'])),
-              stripslashes(htmlentities($instance['after_widget_title'])),
-              stripslashes(htmlentities($instance['after_widget'])) );
+              stripslashes(htmlentities($opts['before_widget'])),
+              stripslashes(htmlentities($opts['before_widget_title'])),
+              stripslashes(htmlentities($opts['after_widget_title'])),
+              stripslashes(htmlentities($opts['after_widget'])) );
     echo '</div> <h3><a href="#">'. __('Import / Export', 'widgetKing') .'</a></h3> <div>';
 
     #import
@@ -275,7 +275,7 @@ class WP_Widget_King_Categories extends WP_Widget {
       'id'    => $this->get_field_id('export'),
       'descr' 	=>__('Export', 'widgetKing'),
       'title' 	=> __('Copy this json string into another category widget to copy its settings', 'widgetKing'),
-      'val' 		=> king_export_json($instance) ) );
+      'val' 		=> king_export_json($opts) ) );
     echo '</div>';
 
 	}#form
