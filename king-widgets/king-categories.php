@@ -261,8 +261,8 @@ class WP_Widget_King_Categories extends WP_Widget {
               stripslashes(htmlentities($instance['after_widget_title'])),
               stripslashes(htmlentities($instance['after_widget'])) );
     echo '</div> <h3><a href="#">'. __('Import / Export', 'widgetKing') .'</a></h3> <div>';
-////		king_get_dump_options('cat',$number,'widget_king_categories');
-//    #copy
+
+    #import
     echo king_textarea_p(array(
       'name' => $this->get_field_name('import'),
       'id'    => $this->get_field_id('import'),
@@ -276,7 +276,6 @@ class WP_Widget_King_Categories extends WP_Widget {
       'descr' 	=>__('Export', 'widgetKing'),
       'title' 	=> __('Copy this json string into another category widget to copy its settings', 'widgetKing'),
       'val' 		=> king_export_json($instance) ) );
-//    echo '</div>';
     echo '</div>';
 
 	}#form
@@ -301,6 +300,7 @@ class WP_Widget_King_Categories extends WP_Widget {
 //      'exclude_tree' => '',
 //      'current_category' => 0,
 //      'title_li' => __( 'Categories' ),
+      'title_li' => '',
 //      'echo' => 1,
 //      'taxonomy' => 'category'
       'orderby' => $data['orderby'],
@@ -334,7 +334,7 @@ class WP_Widget_King_Categories extends WP_Widget {
 //      'show_option_none' => __('No categories'),
 //      'exclude_tree' => '',
 //      'current_category' => 0,
-//      'title_li' => __( 'Categories' ),
+      'title_li' =>'',
 //      'echo' => 1,
 //      'taxonomy' => 'category'
       'orderby' =>'name',
@@ -355,8 +355,8 @@ class WP_Widget_King_Categories extends WP_Widget {
       'title' => '',
       'before_widget' => "<li>",
       'after_widget'	=> addslashes("</ul></li>"),
-      'before_widget_title' => "<h2>",
-      'after_widget_title'	=> addslashes("</h2><ul>"),
+      'before_widget_title' => "<h3 class='widget-title'>",
+      'after_widget_title'	=> addslashes("</h3><ul>"),
       //show options
       'show_category'	=> '',
       'cat_ids'   => '',
