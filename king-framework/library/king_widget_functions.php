@@ -41,90 +41,91 @@ function widget_admin_head() {
 add_action( "admin_print_scripts-widgets.php", 'widget_admin_head' );
 
 /**
-* @desc Where should a widget be shown on. Echo?s a couple of form fields for the Widget Options panel
+* @desc Form fields to define where a widget will be shown on.
 * @author Georg Leciejewski
 */
-function widget_king_where_to_show($widgetname,$number,$show_category,$category_id,$show_on_site_area,$show_not_on_site_area,$site_area,$site_area_id)
-{
-	//show only in category
-	echo king_get_checkbox_p(array(
-			'Label_Id_Name' =>'king_'.$widgetname.'_showcategory_'.$number.'',
-			'Description' 	=>  __('Show only in Category', 'widgetKing'),
-			'Label_Title' 	=>  __('The box is only shown on pages belonging to the given Category. This Switch can be combined with Show(Not) on Special Area.<br /> This gives you more flexibility. f.ex. You can show a box on the Frontpage and inside a category or show a box in a category and everywhere else but the home-page. ', 'widgetKing'),
-			'Value' 		=>$show_category));
+function where_to_show_widget($widget, $show_category, $category_id, $show_on_site_area, $show_not_on_site_area, $site_area, $site_area_id) {
+		//show only in category
+	echo king_checkbox_p(array(
+			'name' => $widget->get_field_name('showcategory'),
+			'id' => $widget->get_field_id('showcategory'),
+			'descr' 	=>  __('Show only in Category', 'widgetKing'),
+			'title' 	=>  __('The box is only shown on pages belonging to the given Category. This Switch can be combined with Show(Not) on Special Area.<br /> This gives you more flexibility. f.ex. You can show a box on the Frontpage and inside a category or show a box in a category and everywhere else but the home-page. ', 'widgetKing'),
+			'val' 		=> $show_category));
 
 	//Category ID
-	echo king_get_textbox_p(array(
-			'Label_Id_Name' =>'king_'.$widgetname.'_category_id_'.$number.'',
-			'Description' 	=>  __('Category ID', 'widgetKing'),
-			'Label_Title' 	=>  __('The category (id) in which the box will be shown. You can insert the ID comma seperated 1,2,3', 'widgetKing'),
-			'Value' 		=>$category_id));
+	echo king_text_p(array(
+			'name' =>  $widget->get_field_name('category_id'),
+    'id' => $widget->get_field_id('category_id'),
+			'descr' 	=>  __('Category ID', 'widgetKing'),
+			'title' 	=>  __('The category (id) in which the box will be shown. You can insert the ID comma seperated 1,2,3', 'widgetKing'),
+			'val'         => $category_id));
 	//show only on Special Page Area
-	echo king_get_checkbox_p(array(
-			'Label_Id_Name' =>'king_'.$widgetname.'_show_on_site_area_'.$number.'',
-			'Description' 	=> __('Show only on Special Page Area', 'widgetKing'),
-			'Label_Title' 	=>  __('The box is only shown on Area of the following select. Dont use together with following Show-Not-in Area checkbox!', 'widgetKing'),
-			'Value' 		=>$show_on_site_area));
+	echo king_checkbox_p(array(
+			'name' => $widget->get_field_name('show_on_site_area'),
+      'id' => $widget->get_field_id('show_on_site_area'),
+			'descr' 	=> __('Show only on Special Page Area', 'widgetKing'),
+			'title' 	=>  __('The box is only shown on Area of the following select. Dont use together with following Show-Not-in Area checkbox!', 'widgetKing'),
+			'val'         => $show_on_site_area));
 	//show not on Special Page Area
-	echo king_get_checkbox_p(array(
-			'Label_Id_Name' =>'king_'.$widgetname.'_show_not_on_site_area_'.$number.'',
-			'Description' 	=> __('DO NOT show on Special Page Area', 'widgetKing'),
-			'Label_Title' 	=>  __('The box is shown on all Areas BUT the one from the following selectbox or the ID/URL/Title field below. !! Do NOT use together with previous checkbox Show on Site Area !!', 'widgetKing'),
-			'Value' 		=>$show_not_on_site_area));
+	echo king_checkbox_p(array(
+			'name' =>  $widget->get_field_name('show_not_on_site_area'),
+      'id' => $widget->get_field_id('show_not_on_site_area'),
+			'descr' 	=> __('DO NOT show on Special Page Area', 'widgetKing'),
+			'title' 	=>  __('The box is shown on all Areas BUT the one from the following selectbox or the ID/URL/Title field below. !! Do NOT use together with previous checkbox Show on Site Area !!', 'widgetKing'),
+			'val'         => $show_not_on_site_area));
 	// ID Name of special website area
-	echo king_get_select_p(array(
-			'Label_Id_Name' =>'king_'.$widgetname.'_site_area_'.$number.'',
-			'Description' 	=> __('Website Area', 'widgetKing'),
-			'Label_Title' 	=> __('Select the special Area on the page where the box is to be diplayed on. A full Description on each can be found in the Wordpress Codex -> Conditional_Tags.', 'widgetKing'),
-			'select_options'=>array('is_home', 'is_page','is_single','is_category','is_archive','is_search','is_author','is_404'),
-			'Value' 		=>$site_area));
+	echo king_select_p(array(
+			'name' =>  $widget->get_field_name('site_area'),
+      'id' => $widget->get_field_id('site_area'),
+			'descr' 	=> __('Website Area', 'widgetKing'),
+			'title' 	=> __('Select the special Area on the page where the box is to be diplayed on. A full Description on each can be found in the Wordpress Codex -> Conditional_Tags.', 'widgetKing'),
+			'options'=> array('is_home', 'is_page','is_single','is_category','is_archive','is_search','is_author','is_404'),
+			'val'         => $site_area));
 	//Item  ID
-	echo king_get_textbox_p(array(
-			'Label_Id_Name' =>'king_'.$widgetname.'_site_area_id_'.$number.'',
-			'Description' 	=> __('Area ID/Slug/Title', 'widgetKing'),
-			'Label_Title' 	=>  __('The ID, Title or Slug of the Page Area(depending on type choosen) the box is to be shown on. You can enter a comma seperated list. Only needed for single, page and category. If left empty the box will appear on all f.ex. single pages. Definitly READ the Wordpress Codex -> Conditional_Tags.', 'widgetKing'),
-			'Value' 		=>$site_area_id
+	echo king_text_p(array(
+			'name' => $widget->get_field_name('site_area_id'),
+      'id' => $widget->get_field_id('site_area_id'),
+			'descr' 	=> __('Area ID/Slug/Title', 'widgetKing'),
+			'title' 	=>  __('The ID, Title or Slug of the Page Area(depending on type choosen) the box is to be shown on. You can enter a comma seperated list. Only needed for single, page and category. If left empty the box will appear on all f.ex. single pages. Definitly READ the Wordpress Codex -> Conditional_Tags.', 'widgetKing'),
+			'val' 		=>$site_area_id
 			));
-
 }// end where to Show
 
 /**
 * @desc The HTML Options fields for the Admin Area
 * @author Georg Leciejewski
 */
-function widget_king_htmloptions($widgetname,$number,$before_widget,$before_widget_title,$after_widget_title,$after_widget)
+function widget_king_htmloptions($widget,$before_widget,$before_widget_title,$after_widget_title,$after_widget)
 {
 	//before widget
-	echo king_get_textbox_p(array(
-			'Label_Id_Name' =>'king_before_'.$widgetname.'_widget_'.$number.'',
-			'Description' 	=> __('HTML before widget', 'widgetKing'),
-			'Label_Title' 	=>  __('HTML which opens this widget. Can be something linke ul with a class, depending on your css and Theme', 'widgetKing'),
-			'Value' 		=>$before_widget,
-			'Class' 		=> 'big'));
-
+	echo king_text_p(array(
+    	'name' =>  $widget->get_field_name('before_widget'),
+      'id' => $widget->get_field_id('before_widget'),
+			'descr' 	=> __('HTML before widget', 'widgetKing'),
+			'title' 	=>  __('HTML which opens this widget. Can be something linke ul with a class, depending on your css and Theme', 'widgetKing'),
+			'val' 		=>$before_widget));
 	//before title
-	echo king_get_textbox_p(array(
-			'Label_Id_Name' 	=>'king_before_'.$widgetname.'_widget_title_'.$number.'',
-			'Description' 	=> __('HTML before widget Title', 'widgetKing'),
-			'Label_Title' 	=> __('HTML before the widget title. Can be something linke strong or h2 with a class, depending on your css and Theme', 'widgetKing'),
-			'Value' 			=>$before_widget_title,
-			'Class' 		=> 'big'));
-
+	echo king_text_p(array(
+ 			'name' =>  $widget->get_field_name('before_widget_title'),
+      'id' => $widget->get_field_id('before_widget_title'),
+			'descr' 	=> __('HTML before widget Title', 'widgetKing'),
+			'title' 	=> __('HTML before the widget title. Can be something linke strong or h2 with a class, depending on your css and Theme', 'widgetKing'),
+			'val' 			=>$before_widget_title));
 	//after title
-	echo king_get_textbox_p(array(
-			'Label_Id_Name' =>'king_after_'.$widgetname.'_widget_title_'.$number.'',
-			'Description' 	=>  __('HTML after widget Title', 'widgetKing'),
-			'Label_Title' 	=> __('HTML after the widget title but before the text list output. Can be something linke /strong ul or /h2 ul , depending on what you set as before-title', 'widgetKing'),
-			'Value' 		=>$after_widget_title,
-			'Class' 		=> 'big'));
-
+	echo king_text_p(array(
+    	'name' =>  $widget->get_field_name('after_widget_title'),
+      'id' => $widget->get_field_id('after_widget_title'),
+			'descr' 	=>  __('HTML after widget Title', 'widgetKing'),
+			'title' 	=> __('HTML after the widget title but before the text list output. Can be something linke /strong ul or /h2 ul , depending on what you set as before-title', 'widgetKing'),
+			'val' 		=>$after_widget_title));
 	//after widget
-	echo king_get_textbox_p(array(
-			'Label_Id_Name' =>'king_after_'.$widgetname.'_widget_'.$number.'',
-			'Description' 	=> __('HTML after widget', 'widgetKing'),
-			'Label_Title' 	=>__('HTML which closes this widget. Can be something linke /ul , depending on what you set as HTML before', 'widgetKing'),
-			'Value' 		=>$after_widget,
-			'Class' 		=> 'big'));
+	echo king_text_p(array(
+ 			'name' =>  $widget->get_field_name('after_widget'),
+      'id' => $widget->get_field_id('after_widget'),
+			'descr' 	=> __('HTML after widget', 'widgetKing'),
+			'title' 	=>__('HTML which closes this widget. Can be something linke /ul , depending on what you set as HTML before', 'widgetKing'),
+			'val' 		=>$after_widget));
 
 }//end widgethtml
 
@@ -138,18 +139,18 @@ function widget_king_htmloptions($widgetname,$number,$before_widget,$before_widg
 function king_get_dump_options($widgetname,$number,$widget_longname)
 {
 
-	echo king_get_textarea_p(array(
-			'Label_Id_Name' =>'king_'.$widgetname.'_dump_'.$number.'',
-			'Description' 	=>  __('Current Configuration Code', 'widgetKing'),
-			'Label_Title' 	=> __('Copy this Configuration code into another widget, send it to your friends or paste new config options here.', 'widgetKing'),
-			'Value' 		=> stripslashes(king_dump_options($widget_longname,$number)),
-			'Class' 		=> 'big'
+	echo king_textarea_p(array(
+			'name' =>'king_'.$widgetname.'_dump_'.$number.'',
+			'descr' 	=>  __('Current Configuration Code', 'widgetKing'),
+			'title' 	=> __('Copy this Configuration code into another widget, send it to your friends or paste new config options here.', 'widgetKing'),
+			'val' 		=> stripslashes(king_dump_options($widget_longname,$number)),
+			'class' 		=> 'big'
 			));
 
-	echo king_get_checkbox_p(array(
-		'Label_Id_Name' =>'king_'.$widgetname.'_usedump_'.$number.'',
-		'Description' 	=>  __('Use Config Code for new settings', 'widgetKing'),
-		'Label_Title' 	=> __('Your inserted config code will be taken to set the widgets options. <br />!CAREFULL only paste Config Options from SAME WIDGET TYPE! <br />If the text is in the wrong format it can f*** up your Options. In such a case you can empty the field to reset the options.','widgetKing')
+	echo king_checkbox_p(array(
+		'name' =>'king_'.$widgetname.'_usedump_'.$number.'',
+		'descr' 	=>  __('Use Config Code for new settings', 'widgetKing'),
+		'title' 	=> __('Your inserted config code will be taken to set the widgets options. <br />!CAREFULL only paste Config Options from SAME WIDGET TYPE! <br />If the text is in the wrong format it can f*** up your Options. In such a case you can empty the field to reset the options.','widgetKing')
 		));
 }
 

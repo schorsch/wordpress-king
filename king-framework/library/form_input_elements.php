@@ -27,68 +27,33 @@ URI: http://www.blog.mediaprojekte.de
 * @param int $max maximum input size
 * @return string whole textbox element
 */
-function king_get_textbox($name, $value, $id='', $class='', $size='', $max='')
-{
-	$result ='<input type="text" name="' . $name . '" value="' . $value . '"';
-	if(!empty($id))
-	{
-		$result .=' id="' . $id . '"';
-	}
-	if(!empty($class))
-	{
-		$result .=' class="' . $class . '"';
-	}
-	if(!empty($size))
-	{
-		$result .=' size="' . $size . '"';
-	}
-	if(!empty($max))
-	{
-		$result .=' maxlength="' . $max . '"';
-	}
-
-	$result .=' />'."\n";
-	return 	$result;
-
+function king_textbox($name, $value, $id='', $class='', $size='', $max='') {
+	$res ='<input type="text" name="' . $name . '" value="' . $value . '"';
+	$res .= !empty($id)     ? ' id="' . $id . '"' : '';
+	$res .= !empty($class)  ? ' class="' . $class . '"' : '';
+	$res .= !empty($size)   ? ' size="' . $size . '"' : '';
+	$res .= !empty($max)    ?	' maxlength="' . $max . '"' : '';
+  $res .=' />';
+	return 	$res;
 }
 /**
 * @desc checkbox form element
 * 		the if around the $value is kindof a hack. if you give the value "checked" the CHECKED atribute is automaticly added
 * @author Georg Leciejewski
 * @param string $name the Name of the checkbox required
-* @param string $value the Value of the checkbox required
+* @param string $value if not empty the checkbox is checked
 * @param string $id
 * @param string $class
 * @return string whole checkbox element
 */
-function king_get_checkbox($name, $value, $id='', $class='',$checked='')
+function king_checkbox($name, $value, $id='', $class='')
 {
-	$result ='<input type="checkbox"  name="' . $name . '" value="' . $value . '"' ;
-
-	if(!empty($value))
-	{
-		if(strstr( $value, "checked"))
-		{
-			$result .=' CHECKED';
-		}
-	}
-
-	if(!empty($id))
-	{
-		$result .=' id="' . $id . '"';
-	}
-    if(!empty($class))
-	{
-		$result .=' class="' . $class . '"';
-	}
-
-	if(!empty($checked))
-	{
-		$result .=' CHECKED"';
-	}
-	$result .=' />'."\n";
-	return $result;
-
+	$res ='<input type="checkbox"  name="' . $name . '"' ;
+	$res .= !empty($value)   ? ' checked="checked"' : '';
+	$res .= !empty($id)      ? ' id="' . $id . '"' : '';
+  $res .= !empty($class)   ? ' class="' . $class . '"' : '';
+	$res .=' />';
+	return $res;
 }
 /**
 * @desc textarea form element
@@ -103,25 +68,25 @@ function king_get_checkbox($name, $value, $id='', $class='',$checked='')
 function king_get_textarea($name, $value, $id='', $class='', $cols='', $rows='')
 {
 
-	$result ='<textarea name="' . $name . '"';
+	$res ='<textarea name="' . $name . '"';
     if(!empty($id))
 	{
-		$result .=' id="' . $id . '"';
+		$res .=' id="' . $id . '"';
 	}
 	if(!empty($cols))
 	{
-		$result .=' cols="' . $cols . '" ';
+		$res .=' cols="' . $cols . '" ';
 	}
 	if(!empty($rows))
 	{
-		$result .=' rows="' . $rows . '"';
+		$res .=' rows="' . $rows . '"';
 	}
 	if(!empty($class))
 	{
-		$result .=' class="' . $class . '"';
+		$res .=' class="' . $class . '"';
 	}
-	$result .=' >'.$value.'</textarea>'."\n";
-	return $result;
+	$res .=' >'.$value.'</textarea>'."\n";
+	return $res;
 
 }
 
@@ -134,23 +99,30 @@ function king_get_textarea($name, $value, $id='', $class='', $cols='', $rows='')
 * @param string $id - ID of select
 * @return string whole select element
 */
-function king_get_select($name, $value, $options, $id ='')
+function king_select($name, $value, $options, $id ='')
 {
-	$result = '<select size="1" name="' . $name . '"';
+	$res = '<select size="1" name="' . $name . '"';
 
 	if(!empty($id))
 	{
-		$result .= ' id="' . $id . '"';
+		$res .= ' id="' . $id . '"';
 	}
-	$result .= '>'."\n";
+	$res .= '>'."\n";
 	foreach ($options as $option)
 	{
 		($option == $value) ? $selected = ' selected="selected"' : $selected = '';
 
-		$result .= '<option value="' . $option . '"' . $selected . '>' . $option . '</option>'."\n";
+		$res .= '<option value="' . $option . '"' . $selected . '>' . $option . '</option>'."\n";
 	}
-	$result .= '</select>'."\n";
-	return $result;
+	$res .= '</select>'."\n";
+	return $res;
+}
+
+function king_label( $id, $descr, $title='' ) {
+  $res = '<label for="' . $id . '"';
+	$res .= !empty($title) ? ' title="' . $title . '"' : '';
+	$res .='>'.$descr.'</label>';
+  return $res;
 }
 
 /**
@@ -165,19 +137,19 @@ function king_get_select($name, $value, $options, $id ='')
 function king_get_roleselect($k_Name, $k_Value, $k_Options, $k_Id, $capability, $role)
 {
 	global  $wp_roles;
-	$result = '<select size="1" name="' . $k_Name . '" id="' . $k_Id . '" >'."\n";
+	$res = '<select size="1" name="' . $k_Name . '" id="' . $k_Id . '" >'."\n";
 
     foreach($wp_roles->role_names as $role_key => $name)
 	{
 		$selected = ($role == $role_key) ? ' selected="selected"' : '';
-		$result .= "<option value=\"$role_key\"{$selected}>{$name}</option>\n";
+		$res .= "<option value=\"$role_key\"{$selected}>{$name}</option>\n";
 	}
 
-	$result .= '</select>'."\n";
-    $result .=  '<input type="hidden" name="' . $k_Name . '" value="'.$role. '" />'."\n";
+	$res .= '</select>'."\n";
+    $res .=  '<input type="hidden" name="' . $k_Name . '" value="'.$role. '" />'."\n";
 	//capability
-	$result .= '<input type="hidden" name="' . $capability . '" value="'. $capability . '" />'."\n";
-	return $result;
+	$res .= '<input type="hidden" name="' . $capability . '" value="'. $capability . '" />'."\n";
+	return $res;
 }
 /**
 * @desc Capabilities selectbox form element
@@ -191,7 +163,7 @@ function king_get_roleselect($k_Name, $k_Value, $k_Options, $k_Id, $capability, 
 function king_get_capabilities_select($name, $value, $id)
 {
 	global $wp_roles;
-	$result .= '<select size="1" name="' . $name . '" id="' . $id . '" >'."\n";
+	$res .= '<select size="1" name="' . $name . '" id="' . $id . '" >'."\n";
     foreach($wp_roles->role_objects as $key => $role) {
 		foreach($role->capabilities as $capability => $grant)
 			$all_cap_names[$capability] = $capability;
@@ -200,12 +172,12 @@ function king_get_capabilities_select($name, $value, $id)
     foreach($all_cap_names as $key => $val)
 	{
 		$selected = ($value == $val) ? ' selected="selected"' : '';
-		$result .= "<option value=\"$key\"{$selected}>{$val}</option>\n";
+		$res .= "<option value=\"$key\"{$selected}>{$val}</option>\n";
 	}
 
-	$result .= '</select>'."\n";
+	$res .= '</select>'."\n";
 
-	return $result;
+	return $res;
 
 }
 
@@ -219,14 +191,14 @@ function king_get_capabilities_select($name, $value, $id)
 */
 function king_get_hidden($name, $value, $id='')
 {
-	$result = '<input type="hidden" name="' . $name . '" value="' . $value . '"';
+	$res = '<input type="hidden" name="' . $name . '" value="' . $value . '"';
     if(!empty($id))
 	{
-		$result .=' id="'.$id.'" ';
+		$res .=' id="'.$id.'" ';
 	}
-	$result .= " />\n";
+	$res .= " />\n";
 
-	return $result;
+	return $res;
 
 }
 
