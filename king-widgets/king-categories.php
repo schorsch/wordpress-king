@@ -50,6 +50,7 @@ class WP_Widget_King_Categories extends WP_Widget {
    */
 
 	function widget( $args, $opts ) {
+    global $wp_query;
 		extract( $args );
 		$title = apply_filters('widget_title', empty( $opts['title'] ) ? __( 'Categories' ) : $opts['title'], $opts, $this->id_base);
 

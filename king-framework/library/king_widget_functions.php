@@ -313,16 +313,11 @@ function king_in_site_area($site_area,$site_area_id)
 * @param string $category - WP definition of siteareas like is_page, is_home
 * @return boolean true/false
 */
-function king_in_category($categories)
-{
+function king_in_category($categories) {
 	global $category_cache, $post;
-
 	$cat_ids = explode(',', $categories);
-
-	foreach($cat_ids as $cat_id)
-	{
-        if (in_category($cat_id) )
-        {
+	foreach($cat_ids as $cat_id){
+    if (in_category($cat_id) ){
 			return true;
 		}
 	}
