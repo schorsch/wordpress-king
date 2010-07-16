@@ -19,7 +19,8 @@ Author URI: http://www.blog.mediaprojekte.de
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 include_once 'form.php';
-                                      
+
+require_once( ABSPATH . WPINC . '/class-json.php' );
 
 /**
 * @desc Output of king widget css and js in admin head area. Is included in every king widget
@@ -44,22 +45,15 @@ add_action( "admin_print_scripts-widgets.php", 'widget_admin_head' );
 * @desc Form fields to define where a widget will be shown on.
 * @author Georg Leciejewski
 */
-function where_to_show_widget($widget, $show_category, $category_id, $show_on_site_area, $show_not_on_site_area, $site_area, $site_area_id) {
+function where_to_show_widget($widget, $show_category, $cat_ids, $show_on_site_area, $show_not_on_site_area, $site_area, $site_area_id) {
+  echo '<p>';
 		//show only in category
-	echo king_checkbox_p(array(
-			'name' => $widget->get_field_name('showcategory'),
-			'id' => $widget->get_field_id('showcategory'),
-			'descr' 	=>  __('Show only in Category', 'widgetKing'),
-			'title' 	=>  __('The box is only shown on pages belonging to the given Category. This Switch can be combined with Show(Not) on Special Area.<br /> This gives you more flexibility. f.ex. You can show a box on the Frontpage and inside a category or show a box in a category and everywhere else but the home-page. ', 'widgetKing'),
-			'val' 		=> $show_category));
-
+  echo king_checkbox(  $widget->get_field_name('show_category'), $show_category, $widget->get_field_id('show_category') );
+  echo king_label(  $widget->get_field_id('show_category'), __('Show in Categories (ids)', 'widgetKing'),
+                      __('Show box only within given category ids: 1,14,13. This Switch can be combined with Show/Not in Area. This gives you more flexibility. f.ex. You can show a box on the Frontpage and inside a category or show a box in a category and everywhere else but the home-page. ', 'widgetKing') );
 	//Category ID
-	echo king_text_p(array(
-			'name' =>  $widget->get_field_name('category_id'),
-    'id' => $widget->get_field_id('category_id'),
-			'descr' 	=>  __('Category ID', 'widgetKing'),
-			'title' 	=>  __('The category (id) in which the box will be shown. You can insert the ID comma seperated 1,2,3', 'widgetKing'),
-			'val'         => $category_id));
+	echo king_textbox( $widget->get_field_name('cat_ids'), $cat_ids, $widget->get_field_id('cat_ids'), 'widefat' );
+  echo '</p>';
 	//show only on Special Page Area
 	echo king_checkbox_p(array(
 			'name' => $widget->get_field_name('show_on_site_area'),
@@ -68,20 +62,32 @@ function where_to_show_widget($widget, $show_category, $category_id, $show_on_si
 			'title' 	=>  __('The box is only shown on Area of the following select. Dont use together with following Show-Not-in Area checkbox!', 'widgetKing'),
 			'val'         => $show_on_site_area));
 	//show not on Special Page Area
+
 	echo king_checkbox_p(array(
 			'name' =>  $widget->get_field_name('show_not_on_site_area'),
       'id' => $widget->get_field_id('show_not_on_site_area'),
 			'descr' 	=> __('DO NOT show on Special Page Area', 'widgetKing'),
 			'title' 	=>  __('The box is shown on all Areas BUT the one from the following selectbox or the ID/URL/Title field below. !! Do NOT use together with previous checkbox Show on Site Area !!', 'widgetKing'),
 			'val'         => $show_not_on_site_area));
-	// ID Name of special website area
-	echo king_select_p(array(
-			'name' =>  $widget->get_field_name('site_area'),
-      'id' => $widget->get_field_id('site_area'),
-			'descr' 	=> __('Website Area', 'widgetKing'),
-			'title' 	=> __('Select the special Area on the page where the box is to be diplayed on. A full Description on each can be found in the Wordpress Codex -> Conditional_Tags.', 'widgetKing'),
-			'options'=> array('is_home', 'is_page','is_single','is_category','is_archive','is_search','is_author','is_404'),
-			'val'         => $site_area));
+//	// ID Name of special website area
+//	echo king_select_p(array(
+//			'name' =>  $widget->get_field_name('site_area'),
+//      'id' => $widget->get_field_id('site_area'),
+//			'descr' 	=> __('Website Area', 'widgetKing'),
+//			'title' 	=> __('Select the special Area on the page where the box is to be diplayed on. A full Description on each can be found in the Wordpress Codex -> Conditional_Tags.', 'widgetKing'),
+//			'options'=> array('is_home', 'is_page','is_single','is_category','is_archive','is_search','is_author','is_404'),
+//			'val'         => $site_area));
+  echo '<p>';
+  echo king_select($widget->get_field_name('site_area'), $site_area,
+          array('is_home', 'is_page','is_single','is_category','is_archive','is_search','is_author','is_404'),
+          $widget->get_field_id('site_area'),  'widefat' );
+
+//  echo king_checkbox(  $widget->get_field_name('show_category'), $show_category, $widget->get_field_id('show_category') );
+//  echo king_label(  $widget->get_field_id('show_category'), __('Show in Categories', 'widgetKing'),
+//                      __('The box is only shown on pages belonging to the given Category. This Switch can be combined with Show/Not in Area.<br /> This gives you more flexibility. f.ex. You can show a box on the Frontpage and inside a category or show a box in a category and everywhere else but the home-page. ', 'widgetKing') );
+//	//Category ID
+//	echo king_textbox( $widget->get_field_name('cat_ids'), $cat_ids, $widget->get_field_id('cat_ids'), 'widefat' );
+  echo '</p>';
 	//Item  ID
 	echo king_text_p(array(
 			'name' => $widget->get_field_name('site_area_id'),
@@ -255,6 +261,26 @@ function king_dump_options($plugin,$number='')
 	return $output;
 }
 
+/**
+* @desc Read Plugin Options from String back into Array
+* @author Georg Leciejewski
+* @param string $input 	- String from textarea with new options
+* @return array for the update_option call .. its not beeing validated
+*/
+function king_import_json($input) {
+   $json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
+   return $json->decode($input);
+}
+/**
+* @desc Output Plugin Options as json
+* @author Georg Leciejewski
+* @param array $args 	- array with VALID widget options
+* @return string json
+*/
+function king_export_json($args) {  
+   $json = new Services_JSON();
+   return $json->encodeUnsafe($args);
+}
 /**
 * @desc Read Plugin Options from String back into Array
 * @author Georg Leciejewski

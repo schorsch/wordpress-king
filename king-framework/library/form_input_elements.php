@@ -49,7 +49,7 @@ function king_textbox($name, $value, $id='', $class='', $size='', $max='') {
 function king_checkbox($name, $value, $id='', $class='')
 {
 	$res ='<input type="checkbox"  name="' . $name . '"' ;
-	$res .= !empty($value)   ? ' checked="checked"' : '';
+	$res .= !empty($value)   ? ' value="checked" checked="checked"' : '';
 	$res .= !empty($id)      ? ' id="' . $id . '"' : '';
   $res .= !empty($class)   ? ' class="' . $class . '"' : '';
 	$res .=' />';
@@ -97,21 +97,18 @@ function king_get_textarea($name, $value, $id='', $class='', $cols='', $rows='')
 * @param string $value - required Value of select
 * @param array $options - required Options passed as array if option=value than it shows as selected
 * @param string $id - ID of select
+* @param string $class - css class
 * @return string whole select element
 */
-function king_select($name, $value, $options, $id ='')
+function king_select($name, $value, $options, $id ='', $class = '')
 {
 	$res = '<select size="1" name="' . $name . '"';
 
-	if(!empty($id))
-	{
-		$res .= ' id="' . $id . '"';
-	}
+	$res .= !empty($id) ? ' id="' . $id . '"': '';
+	$res .= !empty($class) ? ' class="' . $class . '"': '';
 	$res .= '>'."\n";
-	foreach ($options as $option)
-	{
+	foreach ($options as $option)	{
 		($option == $value) ? $selected = ' selected="selected"' : $selected = '';
-
 		$res .= '<option value="' . $option . '"' . $selected . '>' . $option . '</option>'."\n";
 	}
 	$res .= '</select>'."\n";

@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: King_Categories_Widget
-Plugin URI: http://www.blog.mediaprojekte.de/cms-systeme/wordpress/wordpress-widget-king-categories/
-Description: Adds a sidebar Categorie widget and lets users configure EVERY aspect of the category style.
+Plugin URI: http://www.mediaprojekte.de/cms-systeme/wordpress/wordpress-widget-king-categories/
+Description: Category list widget - Configure EVERY aspect of the category list.
 Author: Georg Leciejewski
-Version: 1.01
+Version: 2.00
 Author URI: http://www.mediaprojekte.de
 */
 
@@ -53,9 +53,6 @@ class WP_Widget_King_Categories extends WP_Widget {
 		extract( $args );
 		$title = apply_filters('widget_title', empty( $instance['title'] ) ? __( 'Categories' ) : $instance['title'], $instance, $this->id_base);
 
-//    print_r($instance);
-    //merge defaults
-//		$instance = wp_parse_args( (array) $instance, $this->defaults() );
     //take care of some escaped fields
     $instance['feed_image']         = stripslashes($instance['feed_image']);
     $instance['before_widget']      = empty($instance['before_widget']) ? $before_widget : stripslashes($instance['before_widget']);
@@ -69,7 +66,7 @@ class WP_Widget_King_Categories extends WP_Widget {
     # but as you can see here, they can also be very, very simple.
     if( !empty($instance['show_category']) ) {
       $post = $wp_query->post;
-      if ( king_in_category($instance['category_id']) )  {
+      if ( king_in_category($instance['cat_ids']) )  {
         $this->output($instance);
         $already_out = true;
       }
@@ -91,12 +88,6 @@ class WP_Widget_King_Categories extends WP_Widget {
     if( empty($instance['show_not_on_site_area']) && empty($instance['show_on_site_area']) && empty($instance['show_category']) ) {
       $this->output($instance);
     }
-
-    if (!empty($instance['debug'])){
-      $str = "<h2>__('Your Menu Options are:', 'widgetKing')</h2>";
-      $str .= print_r($instance);
-      echo $str;
-    }
 	}
 
   	/** Update a particular instance.
@@ -111,49 +102,37 @@ class WP_Widget_King_Categories extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-   
-//    if( $new_instance["copy] !=='No' && $new_instance["copy"] !=  $this->id_base){
-//      # copy settings from another widget
-//      $copy = $_POST["king_cat_copy_$number"];
-//      $instance = array();
-//      foreach($options[$copy] as $key => $val){
-//        $instance[$key] = $val;
-//      }
-//    } elseif( !empty($new_instance["import"]) ){
-//      # use setting from dump
-//      $instance = king_read_options($_POST["king_cat_dump_$number"]);
-//    } else{
+    # use setting from json import if available
+    $new_instance = !empty($new_instance["import"]) ? king_import_json($new_instance["import"]) : $new_instance;       
+    # save new form values
+    $instance['title']              = strip_tags(stripslashes($new_instance["title"]));
+    $instance['orderby']            = $new_instance["orderby"];
+    $instance['order']              = $new_instance["order"];
+    $instance['style']              = isset( $new_instance["style"]) ? 'list': 'none' ;
+    $instance['show_last_update']   = $new_instance["show_last_update"];
+    $instance['show_count']         = $new_instance["show_count"];
+    $instance['hide_empty']         = $new_instance["hide_empty"];
+    $instance['use_desc_for_title']	= $new_instance["use_desc_for_title"];
+    $instance['depth']              = $new_instance["depth"];
+    $instance['child_of']           = strip_tags(stripslashes($new_instance["child_of"]));
+    $instance['feed']               = strip_tags(stripslashes($new_instance["feed"]));
+    $instance['feed_image']         = addslashes($new_instance["feed_image"]);
+    $instance['exclude']            = stripslashes($new_instance["exclude"]);
+    $instance['hierarchical']       = $new_instance["hierarchical"];
+    $instance['before_widget']      = html_entity_decode($new_instance["before_widget"]);
+    $instance['after_widget']       = html_entity_decode($new_instance["after_widget"]);
+    $instance['before_widget_title']  = html_entity_decode($new_instance["before_widget_title"]);
+    $instance['after_widget_title']   = html_entity_decode($new_instance["after_widget_title"]);
 
-      # save new form values
-      $instance['title']          = strip_tags(stripslashes($new_instance["title"]));
-      $instance['orderby']        = $new_instance["orderby"];
-      $instance['order']          = $new_instance["order"];
-      $instance['style']          = isset( $new_instance["style"]) ? 'list': 'none' ;
-      $instance['show_last_update']	= $new_instance["show_last_update"];
-      $instance['show_count']       = $new_instance["show_count"];
-      $instance['hide_empty']       = $new_instance["hide_empty"];
-      $instance['use_desc_for_title']	= $new_instance["use_desc_for_title"];
-      $instance['depth']        = $new_instance["depth"];
-      $instance['child_of']     = strip_tags(stripslashes($new_instance["child_of"]));
-      $instance['feed']         = strip_tags(stripslashes($new_instance["feed"]));
-      $instance['feed_image']		= addslashes($new_instance["feed_image"]);
-      $instance['exclude']			= stripslashes($new_instance["exclude"]);
-      $instance['hierarchical']	= $new_instance["hierarchical"];
-      $instance['debug']        = $new_instance["debug"];
-      $instance['before_widget']= html_entity_decode($new_instance["before_widget"]);
-      $instance['after_widget']	= html_entity_decode($new_instance["after_widget"]);
-      $instance['before_widget_title']  = html_entity_decode($new_instance["before_widget_title"]);
-      $instance['after_widget_title']   = html_entity_decode($new_instance["after_widget_title"]);
+    $instance['show_category']      = isset($new_instance["show_category"]);
+    $instance['cat_ids']        = $new_instance["cat_ids"];
+    $instance['show_on_site_area']	= $new_instance["show_on_site_area"];
+    $instance['show_not_on_site_area']= $new_instance["show_not_on_site_area"];
+    $instance['site_area']			= $new_instance["site_area"];
+    $instance['site_area_id']		= $new_instance["site_area_id"];
 
-      $instance['show_category']      = isset($new_instance["showcategory"]);
-      $instance['category_id']        = $new_instance["category_id"];
-      $instance['show_on_site_area']	= $new_instance["show_on_site_area"];
-      $instance['show_not_on_site_area']= $new_instance["show_not_on_site_area"];
-      $instance['site_area']			= $new_instance["site_area"];
-      $instance['site_area_id']		= $new_instance["site_area_id"];
-//  }
 		return $instance;
-	}
+	} #update
 
 	function form( $instance ) {
 //    echo print_r($instance);
@@ -199,7 +178,7 @@ class WP_Widget_King_Categories extends WP_Widget {
 
 		# devider
     echo '</div> <h3><a href="#">'. __('Advanced', 'widgetKing') .'</a></h3> <div>';
-    		#exclude categories
+    #exclude categories
 		echo king_text_p(array(
 				'name' => $this->get_field_name('exclude'),
       'id'    => $this->get_field_id('exclude'),
@@ -269,7 +248,7 @@ class WP_Widget_King_Categories extends WP_Widget {
 		# Where To Show Options Panel
 		where_to_show_widget($this,
                         $instance['show_category'],
-                        $instance['category_id'],
+                        $instance['cat_ids'],
                         $instance['show_on_site_area'],
                         $instance['show_not_on_site_area'],
                         $instance['site_area'],
@@ -281,23 +260,26 @@ class WP_Widget_King_Categories extends WP_Widget {
               stripslashes(htmlentities($instance['before_widget_title'])),
               stripslashes(htmlentities($instance['after_widget_title'])),
               stripslashes(htmlentities($instance['after_widget'])) );
-		# show debug output
-//		echo king_checkbox_p(array(
-//				'name' =>"debug",
-//				'descr' 	=> __('Show Debug Output', 'widgetKing'),
-//				'title' 	=>  __('Shows all set options in Frontend to check what you have entered. The list_cats() is pretty bitchy so you might want to know whats going on.', 'widgetKing'),
-//				'val' 		=> $debug));
-//
-//    echo '</div> <h3><a href="#">'. __('Export', 'widgetKing') .'</a></h3> <div>';
+    echo '</div> <h3><a href="#">'. __('Import / Export', 'widgetKing') .'</a></h3> <div>';
 ////		king_get_dump_options('cat',$number,'widget_king_categories');
 //    #copy
-//		echo king_select_p(array(
-//			'name' => $this->get_field_name('copy'),
-//			'descr' 	=> __('Copy Settings from Widget No.', 'widgetKing'),
-//			'title' 	=> __('Choose a Widget Number from which you want to copy the settings into this one. Make sure to choose the right widget, with some Options in it!', 'widgetKing'),
-//			'select_options'=> array('No','1', '2', '3', '4', '5', '6', '7', '8', '9')));
+    echo king_textarea_p(array(
+      'name' => $this->get_field_name('import'),
+      'id'    => $this->get_field_id('import'),
+      'descr' 	=>__('Import (JSON)', 'widgetKing'),
+      'title' 	=> __('A valid JSON string comming from another category widget', 'widgetKing'),
+      'val' 		=> ''));
+
+    echo king_textarea_p(array(
+      'name' => $this->get_field_name('export'),
+      'id'    => $this->get_field_id('export'),
+      'descr' 	=>__('Export', 'widgetKing'),
+      'title' 	=> __('Copy this json string into another category widget to copy its settings', 'widgetKing'),
+      'val' 		=> king_export_json($instance) ) );
+//    echo '</div>';
     echo '</div>';
-	}
+
+	}#form
 
 
 
@@ -377,7 +359,7 @@ class WP_Widget_King_Categories extends WP_Widget {
       'after_widget_title'	=> addslashes("</h2><ul>"),
       //show options
       'show_category'	=> '',
-      'category_id'   => '',
+      'cat_ids'   => '',
       'show_on_site_area' => '',
       'show_not_on_site_area'	=>  '',
       'site_area_id'	=> '',

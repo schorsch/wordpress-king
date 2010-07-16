@@ -98,7 +98,8 @@ function king_textarea_p($args) {
 	$args = wp_parse_args( $args, $default_args );
   $res = "<p>";
   $res .= king_label( $args['id'], $args['descr'], $args['title'] );
-	$res .= king_get_textarea($args['name'],$args['val'], $args['id'], $args['class'], $args['cols'],$args['rows']);
+	$res .= king_get_textarea($args['name'], $args['val'], $args['id'],
+                            $args['class'], $args['cols'],$args['rows']);
   $res .=  '</p>';
 	return $res;
 }

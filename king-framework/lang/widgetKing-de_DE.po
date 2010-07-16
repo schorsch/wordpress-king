@@ -38,8 +38,8 @@ msgstr "Wenn gew&auml;hlt wird der Event Kalender angezeigt. Hierf&uuml;r muss d
 msgid "Where to show"
 msgstr "Wo wird die Box angezeigt"
 
-msgid "Show only in Category"
-msgstr "Zeige in Kategorie"
+msgid "Show only in Categories"
+msgstr "Zeige nur in Kategorien"
 
 # ..\/king-calendar.php:186
 # ..\/king-text.php:173
@@ -115,9 +115,6 @@ msgstr "HTML nach dem Widget. Es schliesst es ab und variiert je nachdem was sie
 msgid "King Calendar"
 msgstr "King Kalender"
 
-# ..\/king-calendar.php:279
-msgid "How many Calendars would you like?"
-msgstr "Wie viele Kalender sollen angezeigt werden? "
 
 # ..\/king-calendar.php:284
 msgid "If using Multiple Calendars show only one on a site by using the Category Option. This makes sence if you have Events installed  and want to show the Events Calendar on a special Category."
@@ -131,13 +128,13 @@ msgid "The title above your category menu"
 msgstr "Der &uuml;ber dem Men&uuml; angezeigte Titel"
 
 msgid "Show post counts"
-msgstr "Zeige Anzahl der enthaltenen Artikel"
+msgstr "Zeige Artikel-Zähler"
 
 msgid "Show number of posts in category"
 msgstr "Zeigt die Anzahl der in der Kategorie enthaltenen Artikel neben dem Kategorienamen"
 
 msgid "Show hierarchical"
-msgstr "Menu hierarchisch anzeigen"
+msgstr "Zeige die Hierarchie an"
 
 msgid "Shows Categories hierarchical with sub-categories indented -> Depending on your CSS"
 msgstr "Zeigt Unterkategorien einger&uuml;ckt an. Der Stil kann im CSS eingestellt werden. Funktioniert nur mit Listenanzeige eingeschaltet"
