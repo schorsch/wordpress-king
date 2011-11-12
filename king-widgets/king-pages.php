@@ -20,7 +20,8 @@ Author URI: http://www.salesking.eu
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 define("KINGPAGESVERSION",  "200");
-include_once (ABSPATH . 'wp-content/plugins/king-framework/library/form.php');
+//include_once (ABSPATH . 'wp-content/plugins/king-framework/library/class-form.php');
+include_once (ABSPATH . 'wp-content/plugins/king-framework/library/class-widget-form.php');
 require_once(ABSPATH . 'wp-content/plugins/king-framework/library/king_widget_functions.php');
 
 /**
@@ -82,17 +83,16 @@ class WP_Widget_King_Pages extends WP_Widget {
     }
   }
 
-
   /**
   * Output the widgets settings form
   */
   function form( $opts ) {
     //get default settings
     $opts = wp_parse_args( (array) $opts, $this->defaults() );
-
-    echo '<h3><a href="#">'. __('Basic', 'widgetKing').'</a></h3> <div>';
+    $f = new WidgetForm();
+    echo '<div>';
     # show title
-    echo king_text_p(array(
+    echo $f->text (array(
         'name'  => $this->get_field_name('title'),
         'id'    => $this->get_field_id('title'),
         'descr' => __('Title', 'widgetKing'),
@@ -101,22 +101,21 @@ class WP_Widget_King_Pages extends WP_Widget {
 
     #sort Column
     echo '<p>';
-    echo king_label(  $this->get_field_id('orderby'), __('Sort by', 'widgetKing'),
+    echo $f->label_tag(  $this->get_field_id('orderby'), __('Sort by', 'widgetKing'),
                       __('Sort the choosen column ASCending or DESCending.', 'widgetKing') );
     echo '<br/>';
-    echo king_select( $this->get_field_name('orderby'), $opts['orderby'],
+    echo $f->select_tag( $this->get_field_name('orderby'), $opts['orderby'],
                       array('post_title','menu_order','post_date', 'post_modified','ID','post_author','post_name'),
                       $this->get_field_id('orderby') );
 
-    echo king_select( $this->get_field_name('order'), $opts['order'],
+    echo $f->select_tag( $this->get_field_name('order'), $opts['order'],
                       array('asc', 'desc'), $this->get_field_id('order') );
     echo '</p>';
-
 
     # devider
     echo '</div> <h3><a href="#">'. __('Advanced', 'widgetKing') .'</a></h3> <div>';
     #exclude
-    echo king_text_p(array(
+    echo $f->text(array(
       'name'  => $this->get_field_name('exclude'),
       'id'    => $this->get_field_id('exclude'),
       'descr' => __('Exlude Pages with IDs (1,2,3)', 'widgetKing'),
@@ -124,7 +123,7 @@ class WP_Widget_King_Pages extends WP_Widget {
       'val'   => $opts['exclude']));
 
     #show child_of
-    echo king_text_p(array(
+    echo $f->text(array(
       'name'  => $this->get_field_name('child_of'),
       'id'    => $this->get_field_id('child_of'),
       'descr' =>__('Show children of page', 'widgetKing'),
@@ -132,7 +131,7 @@ class WP_Widget_King_Pages extends WP_Widget {
       'val'   => $opts['child_of'] ));
 
     #show depth
-    echo king_text_p(array(
+    echo $f->text(array(
       'name'  => $this->get_field_name('depth'),
       'id'    => $this->get_field_id('depth'),
       'descr' => __('Page tree depth', 'widgetKing'),
@@ -158,7 +157,7 @@ class WP_Widget_King_Pages extends WP_Widget {
 */
     echo '</div> <h3><a href="#">'. __('Show', 'widgetKing') .'</a></h3> <div>';
     # Where To Show Options Panel
-    where_to_show_widget(
+    $f->where_to_show(
       $this,
       $opts['show_category'],
       $opts['cat_ids'],
@@ -169,7 +168,7 @@ class WP_Widget_King_Pages extends WP_Widget {
 
     echo '</div> <h3><a href="#">'. __('HTML', 'widgetKing') .'</a></h3> <div>';
     # show html options
-    widget_king_htmloptions(
+    $f->html_opts(
       $this,
       stripslashes(htmlentities($opts['before_widget'])),
       stripslashes(htmlentities($opts['before_widget_title'])),
@@ -178,19 +177,7 @@ class WP_Widget_King_Pages extends WP_Widget {
     );
     echo '</div> <h3><a href="#">'. __('Import / Export', 'widgetKing') .'</a></h3> <div>';
     #import
-    echo king_textarea_p(array(
-      'name'  => $this->get_field_name('import'),
-      'id'    => $this->get_field_id('import'),
-      'descr' =>__('Import (JSON)', 'widgetKing'),
-      'title' => __('A valid JSON string comming from another pages widget', 'widgetKing'),
-      'val'   => ''));
-
-    echo king_textarea_p(array(
-      'name'  => $this->get_field_name('export'),
-      'id'    => $this->get_field_id('export'),
-      'descr' =>__('Export(JSON)', 'widgetKing'),
-      'title' => __('Paste this json string into another pages widget to copy its settings', 'widgetKing'),
-      'val'   => king_export_json($opts) ) );
+    $f->export_opts($this, $opts);
     echo '</div>';
 
   }#form

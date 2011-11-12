@@ -27,7 +27,7 @@ Author URI: http://www.mediaprojekte.de
 */
 define("KINGCATEGORIESVERSION",  "200");
 
-include_once (ABSPATH . 'wp-content/plugins/king-framework/library/form.php');
+include_once (ABSPATH . 'wp-content/plugins/king-framework/library/class-widget-form.php');
 require_once(ABSPATH . 'wp-content/plugins/king-framework/library/king_widget_functions.php');
 
 
@@ -108,7 +108,7 @@ class WP_Widget_King_Categories extends WP_Widget {
     $opts['orderby']            = $new_opts["orderby"];
     $opts['order']              = $new_opts["order"];
     $opts['style']              = isset( $new_opts["style"]) ? 'list': 'none' ;
-    $opts['show_last_update']   = $new_opts["show_last_update"];
+    $opts['show_date']   = $new_opts["show_date"];
     $opts['show_count']         = $new_opts["show_count"];
     $opts['hide_empty']         = $new_opts["hide_empty"];
     $opts['use_desc_for_title'] = $new_opts["use_desc_for_title"];
@@ -139,10 +139,10 @@ class WP_Widget_King_Categories extends WP_Widget {
   function form( $opts ) {
     //get default settings
     $opts = wp_parse_args( (array) $opts, $this->defaults() );
-
-    echo '<h3><a href="#">'. __('Basic', 'widgetKing').'</a></h3> <div>';
+    $f = new WidgetForm();
+    echo '<div>';
     # show title
-    echo king_text_p(array(
+    echo $f->text(array(
         'name'  => $this->get_field_name('title'),
         'id'    => $this->get_field_id('title'),
         'descr' => __('Title', 'widgetKing'),
@@ -151,18 +151,18 @@ class WP_Widget_King_Categories extends WP_Widget {
 
     #sort Column
     echo '<p>';
-    echo king_label(  $this->get_field_id('orderby'), __('Sort by', 'widgetKing'),
+    echo $f->label_tag(  $this->get_field_id('orderby'), __('Sort by', 'widgetKing'),
                       __('Sort the choosen column ASCending or DESCending.', 'widgetKing') );
     echo '<br/>';
-    echo king_select( $this->get_field_name('orderby'), $opts['orderby'],
+    echo $f->select_tag( $this->get_field_name('orderby'), $opts['orderby'],
                       array('name', 'ID', 'count', 'term_group', 'slug'),
                       $this->get_field_id('orderby') );
 
-    echo king_select( $this->get_field_name('order'), $opts['order'],
+    echo $f->select_tag( $this->get_field_name('order'), $opts['order'],
                       array('asc', 'desc'), $this->get_field_id('order') );
     echo '</p>';
      #show category Count
-    echo king_checkbox_p(array(
+    echo $f->checkbox(array(
       'name'  => $this->get_field_name('show_count'),
       'id'    => $this->get_field_id('show_count'),
       'descr' => __('Show post counts', 'widgetKing'),
@@ -170,7 +170,7 @@ class WP_Widget_King_Categories extends WP_Widget {
       'val'   => $opts['show_count'] ));
     
     #show empty
-    echo king_checkbox_p(array(
+    echo $f->checkbox(array(
       'name'  => $this->get_field_name('hide_empty'),
       'id'    => $this->get_field_id('hide_empty'),
       'descr' => __('Hide Empty Categories', 'widgetKing'),
@@ -180,7 +180,7 @@ class WP_Widget_King_Categories extends WP_Widget {
     # devider
     echo '</div> <h3><a href="#">'. __('Advanced', 'widgetKing') .'</a></h3> <div>';
     #exclude categories
-    echo king_text_p(array(
+    echo $f->text(array(
       'name'  => $this->get_field_name('exclude'),
       'id'    => $this->get_field_id('exclude'),
       'descr' => __('Exclude Categories (1,2,3)', 'widgetKing'),
@@ -188,56 +188,56 @@ class WP_Widget_King_Categories extends WP_Widget {
       'val'   => $opts['exclude']));
 
     #show child_of
-    echo king_text_p(array(
+    echo $f->text(array(
       'name'  => $this->get_field_name('child_of'),
       'id'    => $this->get_field_id('child_of'),
       'descr' =>__('Show Children of Category', 'widgetKing'),
       'title' =>__('Show only children of this category(id).', 'widgetKing'),
       'val'   => $opts['child_of'] ));
     #show cat depth
-    echo king_text_p(array(
+    echo $f->text(array(
       'name'  => $this->get_field_name('depth'),
       'id'    => $this->get_field_id('depth'),
       'descr' => __('Category tree depth', 'widgetKing'),
       'title' =>__('Descend to depth(number) into the category tree: 0 = All, -1 = All Flat(no indent), 1 = only top-level, n = number/levels to descend', 'widgetKing'),
       'val'   => $opts['depth'] ));
 //    #insert feed text
-    echo king_text_p(array(
+    echo $f->text(array(
       'name'  => $this->get_field_name('feed'),
       'id'    => $this->get_field_id('feed'),
       'descr' =>__('Show Category Feed Text', 'widgetKing'),
       'title' => __('Text to display for the link to each Categorys RSS2 feed. Default is no text, and no feed displayed.', 'widgetKing'),
       'val'   => $opts['feed']));
 //    #name of feed image  Path/filename
-    echo king_text_p(array(
+    echo $f->text(array(
       'name'  => $this->get_field_name('feed_image'),
       'id'    => $this->get_field_id('feed_image'),
       'descr' =>__('Show Category Feed Image', 'widgetKing'),
       'title' => __('URL Path/filename for a graphic to act as a link to each Categories RSS2 feed.Overrides the feed parameter.', 'widgetKing'),
       'val'   => $opts['feed_image']));
-    #show show_last_update
-    echo king_checkbox_p(array(
-      'name'  => $this->get_field_name('show_last_update'),
-      'id'    => $this->get_field_id('show_last_update'),
-      'descr' =>__('Date of the last post', 'widgetKing'),
-      'title' => __('Sets whether to display the date of the last post in each Category.', 'widgetKing'),
-      'val'   => $opts['show_last_update'] ));
+    #show show_date
+//    echo $f->checkbox(array(
+//      'name'  => $this->get_field_name('show_date'),
+//      'id'    => $this->get_field_id('show_date'),
+//      'descr' =>__('Date of the last post', 'widgetKing'),
+//      'title' => __('Sets whether to display the date of the last post in each Category.', 'widgetKing'),
+//      'val'   => $opts['show_date'] ));
     #description as title
-    echo king_checkbox_p(array(
+    echo $f->checkbox(array(
       'name'  => $this->get_field_name('use_desc_for_title'),
       'id'    => $this->get_field_id('use_desc_for_title'),
       'descr' =>__('Use Description as Title','widgetKing'),
       'title' =>__('Sets whether to display the Category Description in the links title tag.', 'widgetKing'),
       'val'   => $opts['use_desc_for_title']));
         #list style
-    echo king_checkbox_p(array(
+    echo $f->checkbox(array(
         'name'  => $this->get_field_name('style'),
         'id'    => $this->get_field_id('style'),
         'descr' => __('Show as List (li)', 'widgetKing'),
         'title' => __('Sets whether the Categories are enclosed by style points ->li', 'widgetKing'),
         'val'   => $opts['style']));
     #show hirachical
-    echo king_checkbox_p(array(
+    echo $f->checkbox(array(
       'name'  => $this->get_field_name('hierarchical'),
       'id'    => $this->get_field_id('hierarchical'),
       'descr' => __('Show hierarchical', 'widgetKing'),
@@ -246,7 +246,7 @@ class WP_Widget_King_Categories extends WP_Widget {
 
     echo '</div> <h3><a href="#">'. __('Show', 'widgetKing') .'</a></h3> <div>';
     # Where To Show Options Panel
-    where_to_show_widget(
+    $f->where_to_show(
       $this,
       $opts['show_category'],
       $opts['cat_ids'],
@@ -257,7 +257,7 @@ class WP_Widget_King_Categories extends WP_Widget {
 
     echo '</div> <h3><a href="#">'. __('HTML', 'widgetKing') .'</a></h3> <div>';
     # show html options
-    widget_king_htmloptions(
+    $f->html_opts(
       $this, 
       stripslashes(htmlentities($opts['before_widget'])),
       stripslashes(htmlentities($opts['before_widget_title'])),
@@ -266,19 +266,7 @@ class WP_Widget_King_Categories extends WP_Widget {
     );
     echo '</div> <h3><a href="#">'. __('Import / Export', 'widgetKing') .'</a></h3> <div>';
     #import
-    echo king_textarea_p(array(
-      'name'  => $this->get_field_name('import'),
-      'id'    => $this->get_field_id('import'),
-      'descr' =>__('Import (JSON)', 'widgetKing'),
-      'title' => __('A valid JSON string comming from another category widget', 'widgetKing'),
-      'val'   => ''));
-
-    echo king_textarea_p(array(
-      'name'  => $this->get_field_name('export'),
-      'id'    => $this->get_field_id('export'),
-      'descr' =>__('Export(JSON)', 'widgetKing'),
-      'title' => __('Copy this json string into another category widget to copy its settings', 'widgetKing'),
-      'val'   => king_export_json($opts) ) );
+    $f->export_opts($this, $opts);
     echo '</div>';
 
   }#form
@@ -299,7 +287,7 @@ class WP_Widget_King_Categories extends WP_Widget {
       'title_li' => '',
       'orderby' => $data['orderby'],
       'order' => $data['order'],
-      'show_last_update' => $data['show_last_update'], # 0
+//      'show_date' => $data['show_date'], # 0
       'style' => $data['style'],
       'show_count' => $data['show_count'], #0
       'hide_empty' => $data['hide_empty'], # 1
@@ -326,7 +314,7 @@ class WP_Widget_King_Categories extends WP_Widget {
       'title_li' =>'',
       'orderby' =>'name',
       'order' =>'asc',
-      'show_last_update' => 0,
+      'show_date' => 0,
       'style' =>'list',
       'show_count' => 0,
       'hide_empty' => 1,
