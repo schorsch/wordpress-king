@@ -20,11 +20,7 @@ The license may change in the future without prior notice.
 Georg Leciejewski
 georg@mediaprojekte.de
 */
-define("KINGTEXTVERSION","200");
-
 include_once (ABSPATH . 'wp-content/plugins/king-framework/lib/class-widget-form.php');
-require_once(ABSPATH . 'wp-content/plugins/king-framework/lib/king_widget_functions.php');
-
 
 /**
  * Categories widget class
@@ -35,7 +31,8 @@ class WP_Widget_King_Text extends WP_Widget {
 
   function WP_Widget_King_Text() {
     $widget_ops = array( 'classname' => 'widget_king_text', 'description' => __( "Better text widget with settings for php, where to show, widget html, import/export." ) );
-    $this->WP_Widget('king_text', __('KingText'), $widget_ops);
+    $control_ops = array('width' => 400, 'height' => 350);
+    $this->WP_Widget('king_text', __('KingText'), $widget_ops, $control_ops);
   }
 
   /**
@@ -47,43 +44,10 @@ class WP_Widget_King_Text extends WP_Widget {
   */
   function widget( $args, $opts ) {
     global $wp_query;
-    extract( $args );
-    $title = apply_filters('widget_title', empty( $opts['title'] ) ? '' : $opts['title'], $opts, $this->id_base);
-
-    //take care of some escaped fields
-    $opts['before_widget']      = empty($opts['before_widget']) ? $before_widget : stripslashes($opts['before_widget']);
-    $opts['before_widget_title']= empty($opts['before_widget_title']) ? $before_title : stripslashes($opts['before_widget_title']);
-    $opts['after_widget_title'] = empty($opts['after_widget_title'] ) ? $after_title : stripslashes($opts['after_widget_title']) ;
-    $opts['after_widget']       = empty($opts['after_widget']) ? $after_widget : stripslashes($opts['after_widget']) ;
-
-    $already_out = false;
-
-    if( !empty($opts['show_category']) ) {
-      $post = $wp_query->post;
-      if ( king_in_category($opts['cat_ids']) )  {
-        $this->output($opts);
-        $already_out = true;
-      }
-    }
-    # sitearea Output
-    if( !empty($opts['show_on_site_area']) ) {
-      if ( king_in_site_area($opts['site_area'], $opts['site_area_id']) && !$already_out) {
-        # in the site area
-        $this->output($opts);
-      }
-    } elseif(!empty($opts['show_not_on_site_area'])) {
-      if (!king_in_site_area($opts['site_area'], $opts['site_area_id']) && !$already_out ) {
-        #not in the site area
-        $this->output($opts);
-      }
-    }
-    # always show
-    if( empty($opts['show_not_on_site_area']) && empty($opts['show_on_site_area']) && empty($opts['show_category']) ) {
-      $this->output($opts);
-    }
+    WidgetForm::do_show($this, $args, $opts);
   }
 
-   /**
+  /**
   * Output the widgets settings form
   */
   function form( $opts ) {
@@ -112,7 +76,9 @@ class WP_Widget_King_Text extends WP_Widget {
 				'id'    => $this->get_field_id('text'),
 				'descr' =>  __('Text or HTML', 'widgetKing'),
 				'title' => __('Insert your Text Freely. This can be bannercode, images or whatever you like. The HTML gets stripped if you do not have the right to insert unfiltered html.', 'widgetKing'),
-				'val' 	=> $opts['text']
+				'val' 	=> $opts['text'],
+        'cols'   =>"20",
+        'rows'   =>"16"
 				));
 
     echo '</div> <h3><a href="#">'. __('Show', 'widgetKing') .'</a></h3> <div>';
@@ -127,6 +93,26 @@ class WP_Widget_King_Text extends WP_Widget {
     echo '</div>';
 
   }#form
+
+    /** Update a particular instance.
+   *
+   * This function should check that $new_opts is set correctly.
+   * The newly calculated value of $opts should be returned.
+   * If "false" is returned, the instance won't be saved/updated.
+   *
+   * @param array $new_opts New settings for this instance as input by the user via form()
+   * @param array $old_opts Old settings for this instance
+   * @return array Settings to save or bool false to cancel saving
+   */
+  function update( $new_opts, $old_opts ) {
+    $opts = $old_opts;
+    # use setting from json import if available
+    $new_opts = !empty($new_opts["import"]) ? king_import_json($new_opts["import"]) : $new_opts;
+    $opts['use_php']  = isset($new_opts["use_php"]);
+    $opts['text']     = $new_opts["text"];
+    WidgetForm::clean_default_opts($opts, $new_opts);
+    return $opts;
+  }
 
 
   /**
@@ -162,14 +148,12 @@ class WP_Widget_King_Text extends WP_Widget {
   function defaults() {
     return array(
       'use_php' => '',
-      //widget options
       'title' => '',
       'text' => '',
       'before_widget' => "<li>",
       'after_widget'  => addslashes("</ul></li>"),
       'before_widget_title' => "<h3 class='widget-title'>",
       'after_widget_title'  => addslashes("</h3><ul>"),
-      //show options
       'show_category'  => '',
       'cat_ids'   => '',
       'show_on_site_area' => '',

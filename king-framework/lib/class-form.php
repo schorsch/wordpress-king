@@ -1,11 +1,11 @@
 <?php
 /*
-Helper Function for creating widget admin forms
+Helper Function for creating  forms
 Author: Georg Leciejewski
-Version: 0.8
-URI: http://www.blog.mediaprojekte.de
+Version: 1.0
+URI: http://www.salesking.eu
 */
-/*  Copyright 2006  georg leciejewski  (email : georg@mediaprojekte.de)
+/*  Copyright 2006 - 2012 georg leciejewski
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by

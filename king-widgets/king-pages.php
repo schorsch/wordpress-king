@@ -19,9 +19,7 @@ Author URI: http://www.salesking.eu
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-define("KINGPAGESVERSION",  "200");
 include_once (ABSPATH . 'wp-content/plugins/king-framework/lib/class-widget-form.php');
-require_once(ABSPATH . 'wp-content/plugins/king-framework/lib/king_widget_functions.php');
 
 /**
  * Pages menu widget
@@ -45,41 +43,7 @@ class WP_Widget_King_Pages extends WP_Widget {
    */
   function widget( $args, $opts ) {
     global $wp_query;
-    extract( $args );
-    $title = apply_filters('widget_title', empty( $opts['title'] ) ? __( 'Pages' ) : $opts['title'], $opts, $this->id_base);
-
-    //take care of some escaped fields
-    $opts['before_widget']      = empty($opts['before_widget']) ? $before_widget : stripslashes($opts['before_widget']);
-    $opts['before_widget_title']= empty($opts['before_widget_title']) ? $before_title : stripslashes($opts['before_widget_title']);
-    $opts['after_widget_title'] = empty($opts['after_widget_title'] ) ? $after_title : stripslashes($opts['after_widget_title']) ;
-    $opts['after_widget']       = empty($opts['after_widget']) ? $after_widget : stripslashes($opts['after_widget']) ;
-
-    $already_out = false;
-    # These lines generate our output. Widgets can be very complex
-    # but as you can see here, they can also be very, very simple.
-    if( !empty($opts['show_category']) ) {
-      $post = $wp_query->post;
-      if ( king_in_category($opts['cat_ids']) )  {
-        $this->output($opts);
-        $already_out = true;
-      }
-    }
-    # sitearea Output
-    if( !empty($opts['show_on_site_area']) ) {
-      if ( king_in_site_area($opts['site_area'], $opts['site_area_id']) && !$already_out) {
-        # in the site area
-        $this->output($opts);
-      }
-    } elseif(!empty($opts['show_not_on_site_area'])) {
-      if (!king_in_site_area($opts['site_area'], $opts['site_area_id']) && !$already_out ) {
-        #not in the site area
-        $this->output($opts);
-      }
-    }
-    # always show
-    if( empty($opts['show_not_on_site_area']) && empty($opts['show_on_site_area']) && empty($opts['show_category']) ) {
-      $this->output($opts);
-    }
+    WidgetForm::do_show($this, $args, $opts);
   }
 
   /**
@@ -179,10 +143,9 @@ class WP_Widget_King_Pages extends WP_Widget {
    */
   function update( $new_opts, $old_opts ) {
     $opts = $old_opts;
-    # use setting from json import if available
+    # use setting from json import if availsable
     $new_opts = !empty($new_opts["import"]) ? king_import_json($new_opts["import"]) : $new_opts;
     # save new form values
-    $opts['title']              = strip_tags(stripslashes($new_opts["title"]));
     $opts['orderby']            = $new_opts["orderby"];
     $opts['order']              = $new_opts["order"];
     $opts['depth']              = $new_opts["depth"];
@@ -191,17 +154,7 @@ class WP_Widget_King_Pages extends WP_Widget {
     $opts['show_date']          = $new_opts["date_format"];
     $opts['child_of']           = $new_opts["child_of"];
 
-    $opts['before_widget']      = html_entity_decode($new_opts["before_widget"]);
-    $opts['after_widget']       = html_entity_decode($new_opts["after_widget"]);
-    $opts['before_widget_title']= html_entity_decode($new_opts["before_widget_title"]);
-    $opts['after_widget_title'] = html_entity_decode($new_opts["after_widget_title"]);
-
-    $opts['show_category']      = isset($new_opts["show_category"]);
-    $opts['cat_ids']            = $new_opts["cat_ids"];
-    $opts['show_on_site_area']  = $new_opts["show_on_site_area"];
-    $opts['show_not_on_site_area']= $new_opts["show_not_on_site_area"];
-    $opts['site_area']          = $new_opts["site_area"];
-    $opts['site_area_id']       = $new_opts["site_area_id"];
+    WidgetForm::clean_default_opts($opts, $new_opts);
 
     return $opts;
   }
@@ -233,10 +186,6 @@ class WP_Widget_King_Pages extends WP_Widget {
       'show_not_on_site_area'  =>  '',
       'site_area_id'  => '',
       'site_area'    => ''
-//  TODO if needed  WP_LISTCATS OPTIONS
-//    'title_li' => __( 'Pages' ),
-//    'echo' => 1,
-//    'taxonomy' => 'category'
       );
   }
   /**

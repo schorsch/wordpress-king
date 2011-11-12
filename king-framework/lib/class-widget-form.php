@@ -1,5 +1,6 @@
 <?php
 include_once 'class-form.php';
+require_once 'king_widget_functions.php';
 
 class WidgetForm extends KForm {
 
@@ -108,5 +109,79 @@ class WidgetForm extends KForm {
         'val' 	=> $opts['site_area_id']
         ));
   }// end where to Show
+
+
+  /**
+   * clean default fields comming from widget form submits. Directly changes
+   * the $options hash
+   *
+   * @param <Array> $opts - existing options
+   * @param <Array> $new_opts
+   */
+  public static function clean_default_opts( &$opts, $new_opts ) {
+
+    $opts['title']    = strip_tags(stripslashes($new_opts["title"]));
+
+    $opts['before_widget']      = html_entity_decode($new_opts["before_widget"]);
+    $opts['after_widget']       = html_entity_decode($new_opts["after_widget"]);
+    $opts['before_widget_title']= html_entity_decode($new_opts["before_widget_title"]);
+    $opts['after_widget_title'] = html_entity_decode($new_opts["after_widget_title"]);
+
+    $opts['show_category']      = isset($new_opts["show_category"]);
+    $opts['cat_ids']            = $new_opts["cat_ids"];
+    $opts['show_on_site_area']  = $new_opts["show_on_site_area"];
+    $opts['show_not_on_site_area']= $new_opts["show_not_on_site_area"];
+    $opts['site_area']          = $new_opts["site_area"];
+    $opts['site_area_id']       = $new_opts["site_area_id"];
+  }
+  /**
+   * clean default fields comming from widget form submits. Directly changes
+   * the $options hash
+   *
+   * @param <Widget> $widget object
+   * @param <type> $args is an array of strings that help widgets to conform to
+   *  the active theme: before_widget, before_title, after_widget,
+   *  and after_title are the array keys. Default tags: li and h2.
+   * @param <Array> $opts - existing options
+   */
+  public static function do_show( $widget, $args, $opts) {
+    extract( $args );
+
+    $opts['title'] = apply_filters('widget_title', empty( $opts['title'] ) ? '': $opts['title'], $opts, $widget->id_base);
+
+    //take care of some escaped fields
+    $opts['before_widget']      = empty($opts['before_widget']) ? $before_widget : stripslashes($opts['before_widget']);
+    $opts['before_widget_title']= empty($opts['before_widget_title']) ? $before_title : stripslashes($opts['before_widget_title']);
+    $opts['after_widget_title'] = empty($opts['after_widget_title'] ) ? $after_title : stripslashes($opts['after_widget_title']) ;
+    $opts['after_widget']       = empty($opts['after_widget']) ? $after_widget : stripslashes($opts['after_widget']) ;
+
+    $already_out = false;
+    # These lines generate our output. Widgets can be very complex
+    # but as you can see here, they can also be very, very simple.
+    if( !empty($opts['show_category']) ) {
+      $post = $wp_query->post;
+      if ( king_in_category($opts['cat_ids']) )  {
+        $widget->output($opts);
+        $already_out = true;
+      }
+    }
+    # sitearea Outputexport
+    if( !empty($opts['show_on_site_area']) ) {
+      if ( king_in_site_area($opts['site_area'], $opts['site_area_id']) && !$already_out) {
+        # in the site area
+        $widget->output($opts);
+      }
+    } elseif(!empty($opts['show_not_on_site_area'])) {
+      if (!king_in_site_area($opts['site_area'], $opts['site_area_id']) && !$already_out ) {
+        #not in the site area
+        $widget->output($opts);
+      }
+    }
+    # always show
+    if( empty($opts['show_not_on_site_area']) && empty($opts['show_on_site_area']) && empty($opts['show_category']) ) {
+      $widget->output($opts);
+    }
+  }
+
 }
 ?>
