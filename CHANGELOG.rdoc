@@ -1,0 +1,14 @@
+= Changelog
+
+2011-11
+* rewrite KingPages
+* dropped unused classes
+
+2011-07
+* started to rewrite king categories to new widgets structure
+
+2009
+* some minor cleanup
+
+2006
+* Yes that's when i started this
