@@ -9,6 +9,8 @@ Author URI: http://www.mediaprojekte.de
 */
 
 /*
+    Copyright 2006-2012  Georg Leciejewski
+ 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
@@ -44,11 +46,10 @@ class WP_Widget_King_Categories extends WP_Widget {
   /**
    * Output of the widget
    * @param <type> $args is an array of strings that help widgets to conform to
-    # the active theme: before_widget, before_title, after_widget,
-    # and after_title are the array keys. Default tags: li and h2.
+   * the active theme: before_widget, before_title, after_widget,
+   * and after_title are the array keys. Default tags: li and h2.
    * @param <type> $opts
    */
-
   function widget( $args, $opts ) {
     global $wp_query;
     extract( $args );
@@ -62,8 +63,7 @@ class WP_Widget_King_Categories extends WP_Widget {
     $opts['after_widget']       = empty($opts['after_widget']) ? $after_widget : stripslashes($opts['after_widget']) ;
 
     $already_out = false;
-    # These lines generate our output. Widgets can be very complex
-    # but as you can see here, they can also be very, very simple.
+    # Show only in category
     if( !empty($opts['show_category']) ) {
       $post = $wp_query->post;
       if ( king_in_category($opts['cat_ids']) )  {
@@ -89,7 +89,7 @@ class WP_Widget_King_Categories extends WP_Widget {
     }
   }
 
-    /** Update a particular instance.
+   /** Update a particular instance.
    *
    * This function should check that $new_opts is set correctly.
    * The newly calculated value of $opts should be returned.
@@ -146,13 +146,13 @@ class WP_Widget_King_Categories extends WP_Widget {
         'name'  => $this->get_field_name('title'),
         'id'    => $this->get_field_id('title'),
         'descr' => __('Title', 'widgetKing'),
-        'title' => __('The title above your category menu', 'widgetKing'),
+        'title' => __('The title above this widget', 'widgetKing'),
         'val'   => esc_html($opts['title']) ));
 
     #sort Column
     echo '<p>';
     echo king_label(  $this->get_field_id('orderby'), __('Sort by', 'widgetKing'),
-                      __('Sort Categories ascending or descending depending on choosen sort column.', 'widgetKing') );
+                      __('Sort the choosen column ASCending or DESCending.', 'widgetKing') );
     echo '<br/>';
     echo king_select( $this->get_field_name('orderby'), $opts['orderby'],
                       array('name', 'ID', 'count', 'term_group', 'slug'),
@@ -184,7 +184,7 @@ class WP_Widget_King_Categories extends WP_Widget {
       'name'  => $this->get_field_name('exclude'),
       'id'    => $this->get_field_id('exclude'),
       'descr' => __('Exclude Categories (1,2,3)', 'widgetKing'),
-      'title' => __('Sets the Categories to be excluded. This must be in the form of an array (ex: 1, 2, 3).', 'widgetKing'),
+      'title' => __('Comma separated list of numeric IDs to be excluded from the list. E.g: 10, 20, 30', 'widgetKing'),
       'val'   => $opts['exclude']));
 
     #show child_of
@@ -286,8 +286,7 @@ class WP_Widget_King_Categories extends WP_Widget {
 
   /**
   * @desc the actual output of the category menu
-  * @param array $data - holding the switches
-  * @param int $number - the current widget number
+  * @param array $data - widget options
   */
   function output($data) {
     echo '<!-- Start King Cat ' .$this->id_base . ' -->'."\n";

@@ -7,7 +7,7 @@ Author: Georg Leciejewski
 Version: 0.73
 Author URI: http://www.blog.mediaprojekte.de
 */
-/*  Copyright 2006  georg leciejewski  (email : georg@mediaprojekte.de)
+/*  Copyright 2006-2012  Georg Leciejewski
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by

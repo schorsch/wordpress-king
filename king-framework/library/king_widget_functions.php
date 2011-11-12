@@ -7,7 +7,7 @@ Author URI: http://www.blog.mediaprojekte.de
 */
 
 
-/*  Copyright 2006  georg leciejewski  (email : georg@mediaprojekte.de)
+/*  Copyright 2006-2012  Georg Leciejewski
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -60,7 +60,7 @@ function where_to_show_widget($widget, $show_category, $cat_ids, $show_on_site_a
                    __('The box is only shown on Area of the following select. Dont use together with following Show-Not-in Area checkbox!', 'widgetKing') );
    echo '<br/>';
   echo king_checkbox(  $widget->get_field_name('show_not_on_site_area'), $show_not_on_site_area, $widget->get_field_id('show_not_on_site_area') );
-  echo king_label(  $widget->get_field_id('show_category'), __('DO NOT show on Special Page Area', 'widgetKing'),
+  echo king_label(  $widget->get_field_id('show_not_on_site_area'), __('DO NOT show on Special Page Area', 'widgetKing'),
                     __('The box is shown on all Areas BUT the one from the following selectbox or the ID/URL/Title field below. !! Do NOT use together with previous checkbox Show on Site Area !!', 'widgetKing') );
 
 //	// ID Name of special website area

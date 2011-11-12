@@ -13,7 +13,7 @@ jQuery(document).ready(function () {
 		return false;
 	}).next().hide();
 
-  //hide cat id input when showcatategory is not selected
+  //hide cat id input when showcategory is not selected
   var cat_ids = jQuery("div[id*='_king_'].widget input[id*='show_category']");
   cat_ids.each(function(){
     if ( !jQuery(this).is(':checked') ) {  jQuery(this).nextAll('input').hide(); };
