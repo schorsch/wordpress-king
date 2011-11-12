@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: King_Pages_Widget
+Plugin Name: King Pages Widget
 Plugin URI: http://www.blog.mediaprojekte.de/cms-systeme/wordpress-plugins/wordpress-widget-king-pages/
 Description: Adds a sidebar Pages widget and lets users configure every aspect of the page menu.
 Author: Georg Leciejewski
@@ -238,7 +238,6 @@ class WP_Widget_King_Pages extends WP_Widget {
 //    'echo' => 1,
 //    'taxonomy' => 'category'
       );
-
   }
   /**
   * @desc the actual output of the widget

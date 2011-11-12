@@ -1,6 +1,6 @@
 ﻿<?php
 /*
-Plugin Name: King_Categories_Widget
+Plugin Name: King Categories Widget
 Plugin URI: http://www.mediaprojekte.de/cms-systeme/wordpress/wordpress-widget-king-categories/
 Description: Category list widget - Configure EVERY aspect of the category list.
 Author: Georg Leciejewski
