@@ -156,24 +156,10 @@ class WP_Widget_King_Pages extends WP_Widget {
 */
     echo '</div> <h3><a href="#">'. __('Show', 'widgetKing') .'</a></h3> <div>';
     # Where To Show Options Panel
-    $f->where_to_show(
-      $this,
-      $opts['show_category'],
-      $opts['cat_ids'],
-      $opts['show_on_site_area'],
-      $opts['show_not_on_site_area'],
-      $opts['site_area'],
-      $opts['site_area_id'] );
-
+    $f->where_to_show($this, $opts );
     echo '</div> <h3><a href="#">'. __('HTML', 'widgetKing') .'</a></h3> <div>';
     # show html options
-    $f->html_opts(
-      $this,
-      stripslashes(htmlentities($opts['before_widget'])),
-      stripslashes(htmlentities($opts['before_widget_title'])),
-      stripslashes(htmlentities($opts['after_widget_title'])),
-      stripslashes(htmlentities($opts['after_widget']))
-    );
+    $f->html_opts($this, $opts );
     echo '</div> <h3><a href="#">'. __('Import / Export', 'widgetKing') .'</a></h3> <div>';
     #import
     $f->export_opts($this, $opts);

@@ -257,13 +257,7 @@ class WP_Widget_King_Categories extends WP_Widget {
 
     echo '</div> <h3><a href="#">'. __('HTML', 'widgetKing') .'</a></h3> <div>';
     # show html options
-    $f->html_opts(
-      $this, 
-      stripslashes(htmlentities($opts['before_widget'])),
-      stripslashes(htmlentities($opts['before_widget_title'])),
-      stripslashes(htmlentities($opts['after_widget_title'])),
-      stripslashes(htmlentities($opts['after_widget'])) 
-    );
+    $f->html_opts( $this, $opts);
     echo '</div> <h3><a href="#">'. __('Import / Export', 'widgetKing') .'</a></h3> <div>';
     #import
     $f->export_opts($this, $opts);
