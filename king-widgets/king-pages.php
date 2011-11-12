@@ -2,10 +2,10 @@
 /*
 Plugin Name: King_Pages_Widget
 Plugin URI: http://www.blog.mediaprojekte.de/cms-systeme/wordpress-plugins/wordpress-widget-king-pages/
-Description: Adds a sidebar Pages widget and lets users configure every Aspect of the Pages Navigation list.
+Description: Adds a sidebar Pages widget and lets users configure every aspect of the page menu.
 Author: Georg Leciejewski
 Version: 2.0
-Author URI: http://www.blog.mediaprojekte.de
+Author URI: http://www.salesking.eu
 */
 
 /*  Copyright 2006-2012  Georg Leciejewski

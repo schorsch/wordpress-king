@@ -1,10 +1,35 @@
 = Blog King
 
-A collection of widgets and plugins for wordpress > 2.8
+A collection of widgets for Wordpress with advanced display and configuration
+options
 
-Download the folders into your /wp-content/plugins/ folder. Activate in admin area and youre good to go.
+== King Widgets
 
-The King Widgets are pretty advanced, since they are stuffed with options.
+When using WordPress as a CMS you quickly fall in love with sidebars and
+widgets. But here starts the problem: all default widgets lack settings for
+
+* Where & where not to show
+* Surrounding HTML
+* Detailed options eg. for category and pages menu's
+
+So it's time to teach those widget some serious CMS features. All King widget
+sport options for:
+
+* define where widgets are to be shown:
+  * on a special site area(home, search, single, category, 404, ...)
+  * inside defined categories
+  * everywhere but on a special site area
+  * combine the above
+  * eg: Show widget inside category X, on home and contact page
+* Surrounding HTML - before, after widget and title
+* Import/Export widget settings as JSON
+* Category & page widgets with settings for sorting, depth, childs, ..
+
+
+== Install
+
+Download the folders into your /wp-content/plugins/ folder. Activate in admin
+area and you are good to go. of course you need to add the widgets to a sidebar.
 
 Details can be found here:
 
@@ -17,6 +42,6 @@ http://github.com/schorsch/blog-king/tree/master
   
 == ToDo
 
-* all widgets will be rewritten to the new Widget class introduced in Wordpress 2.8
+Currently KingPages and KingCategory are ready to go .. more will follow
 
 
