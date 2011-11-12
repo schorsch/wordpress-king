@@ -3,7 +3,6 @@ include_once 'class-form.php';
 
 class WidgetForm extends KForm {
 
-
   /**
   * @desc Output export/import fields
   * @author Georg Leciejewski

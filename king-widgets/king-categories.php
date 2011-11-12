@@ -27,8 +27,8 @@ Author URI: http://www.mediaprojekte.de
 */
 define("KINGCATEGORIESVERSION",  "200");
 
-include_once (ABSPATH . 'wp-content/plugins/king-framework/library/class-widget-form.php');
-require_once(ABSPATH . 'wp-content/plugins/king-framework/library/king_widget_functions.php');
+include_once (ABSPATH . 'wp-content/plugins/king-framework/lib/class-widget-form.php');
+require_once(ABSPATH . 'wp-content/plugins/king-framework/lib/king_widget_functions.php');
 
 
 /**
@@ -108,7 +108,7 @@ class WP_Widget_King_Categories extends WP_Widget {
     $opts['orderby']            = $new_opts["orderby"];
     $opts['order']              = $new_opts["order"];
     $opts['style']              = isset( $new_opts["style"]) ? 'list': 'none' ;
-    $opts['show_date']   = $new_opts["show_date"];
+    $opts['show_date']          = $new_opts["show_date"];
     $opts['show_count']         = $new_opts["show_count"];
     $opts['hide_empty']         = $new_opts["hide_empty"];
     $opts['use_desc_for_title'] = $new_opts["use_desc_for_title"];

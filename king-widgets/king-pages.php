@@ -20,9 +20,8 @@ Author URI: http://www.salesking.eu
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 define("KINGPAGESVERSION",  "200");
-//include_once (ABSPATH . 'wp-content/plugins/king-framework/library/class-form.php');
-include_once (ABSPATH . 'wp-content/plugins/king-framework/library/class-widget-form.php');
-require_once(ABSPATH . 'wp-content/plugins/king-framework/library/king_widget_functions.php');
+include_once (ABSPATH . 'wp-content/plugins/king-framework/lib/class-widget-form.php');
+require_once(ABSPATH . 'wp-content/plugins/king-framework/lib/king_widget_functions.php');
 
 /**
  * Pages menu widget

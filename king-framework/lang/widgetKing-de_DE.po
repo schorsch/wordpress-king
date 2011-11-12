@@ -825,32 +825,3 @@ msgstr "Den Code f&uuml;r die Einstellungen benutzen"
 # F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:176
 msgid "Your inserted config code will be taken to set the widgets options. <br />!CAREFULL only paste Config Options from SAME WIDGET TYPE! <br />If the text is in the wrong format it can f*** up your Options. In such a case you can empty the field to reset the options."
 msgstr "Der eingef&uuml;gte Code wird f&uuml;r die Widget Essntellungen &uuml;bernommen <br /> ACHTUNG nur Code vom gleichen Widgettyp einf&uuml;gen. Wenn der Text in enem falschen Format ist, kann er das Widget zerschiessen. In einem solchen Fall leere den Code und speichere das Widget erneut."
-
-# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:194
-msgid "Use JS Slide Open Box"
-msgstr "Benutze Auf/Zu Widget"
-
-# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:195
-msgid "A Javascript slider function for the Box is available. ONLY Use when you know what you are doing...or pay me to do it right!<br> You have use the widget custom html fields and wrap your Widget Content in a div or li with an id set to id=&quot;cat1&quot; . The number must be the same like the widget number. Then you must add the on-click toggle effect to f.ex. the widgets h2: &lt; h2 onClick=&quot;catslide1.toggle();&quot; &gt; <br>If this ins not set it will not work"
-msgstr "Es wird eine Auf-/Zuklappen -Javascript Funktion verf&uuml;gbar. Wenn Sie das hier nicht verstehen nicht benutzen! <br> Wenn gesetzt muss der Widgetinhalt &uuml;ber die HTML-Felder mit einem HTML Element div/li oder p mit der  id=&quot;cat1&quot;  umgeben werden. Die Nummer muss dieselbe sein wie die Widgetnummer.<br />Dann muss noch ein Element den onClick Event erhalten.  Das kann z.B. der Widget H2 Titel sein: &lt; h2 onClick=&quot;catslide1.toggle();&quot; &gt; <br />Sie k&ouml;nnen in der functions.php oder im Quellcode den widget html code nachsehen und diesen wie beschrieben erweitern."
-
-# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:200
-msgid "Show JS SlideBox open"
-msgstr "Zeige das Auf/Zu Widget "
-
-# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:201
-msgid "If checked the Box will be open on first page load. If empty the Box will be collapsed on first Page load"
-msgstr "Wenn gesetzt wird das Auf/Zu Widget beim ersten Laden der Seite ge&ouml;ffnet angezeigt."
-
-# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:206
-msgid "JS Sliding Time in ms"
-msgstr "Auf/Zu Zeit in ms"
-
-# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:207
-msgid "Time in Milliseconds the Box will take to open or close. Default is 400. Only enter Numbers!"
-msgstr "Zeit in Millisekunden welche das Auf/Zu Widget zum &Ouml;ffnen benötigt."
-
-# F:\Projekte\online_projekte_georg\King-Products\Website-King\online\wp-content\plugins\king-includes\library/king_widget_functions.php:196
-msgid "new version available"
-msgstr "neue Version verf&uuml;gbar"
-
