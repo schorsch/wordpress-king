@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: King_Links_Widget
+
 Plugin URI: http://www.blog.mediaprojekte.de/cms-systeme/wordpress-plugins/wordpress-widget-king-links/
 Description: Up to 10 sidebar Link widgets and lets you configure every Aspect of the Link list.
 Author: Georg Leciejewski

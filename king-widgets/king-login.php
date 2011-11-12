@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: King_Login_Widget
+
 Plugin URI: http://www.blog.mediaprojekte.de/
 Description: Advanced Login Box Widget including redirect Options
 Author: Georg Leciejewski

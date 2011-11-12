@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: King_Calendar_Widget
+
 Plugin URI: http://www.blog.mediaprojekte.de/cms-systeme/wordpress-plugins/wordpress-widget-king-calendar/
 Description: Calendar and Event calendar 3.0 widget -> only usefull if events plugin is installed
 Author: Georg Leciejewski

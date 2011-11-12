@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: King_Search_Widget
+
 Plugin URI: http://www.blog.mediaprojekte.de/cms-systeme/wordpress-plugins/wordpress-widget-king-search/
 Description: Advanced Search Box Widget including Category Dropdown and Search Word Spellcheck Suggestion
 Author: Georg Leciejewski

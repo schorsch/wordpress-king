@@ -104,7 +104,7 @@ class WP_Widget_King_Text extends WP_Widget {
 				'id'    => $this->get_field_id('use_php'),
 				'descr' => __('Use PHP in Text', 'widgetKing'),
 				'title' => __('If checked the inserted code is evaluated as php. PHP Code MUST be enclosed in &lt;?php and ?&gt; tags! You can also insert Wordpress Code if you have not found a Widget for it yet.', 'widgetKing'),
-				'vale'  => $use_php) );
+				'val'  =>  $opts['use_php']) );
 //    if ( !current_user_can('unfiltered_html') )
 //					$newoptions[$number]['text'] = stripslashes(wp_filter_post_kses($newoptions[$number]['text']));
 		echo $f->textarea(array(
@@ -146,8 +146,7 @@ class WP_Widget_King_Text extends WP_Widget {
 
     if( !empty($use_php) ) {
       eval('?>'.$textparts[$partno]);
-    }
-    else {
+    }else {
       echo $textparts[$partno];
     }
 

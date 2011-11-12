@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: King_RSS_Widget
+
 Plugin URI: http://www.blog.mediaprojekte.de/cms-systeme/wordpress-plugins/wordpress-widget-king-rss/
 Description: Adds multiple damn advanced RSS widgets to your sidebars.
 Author: Georg Leciejewski
