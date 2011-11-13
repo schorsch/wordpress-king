@@ -7,10 +7,8 @@ options
 
 When using WordPress as a CMS you quickly fall in love with sidebars and
 widgets. But here starts the problem: all default widgets lack settings for
-
-* Where & where not to show
-* Surrounding HTML
-* Detailed options eg. for category and pages menu's
+Where & where not to show, Surrounding HTML, Detailed options eg. for category
+and pages menu's.
 
 So it's time to teach those widget some serious CMS features. All King widget
 sport options for:
@@ -42,6 +40,4 @@ http://github.com/schorsch/blog-king/tree/master
   
 == ToDo
 
-Currently KingPages and KingCategory are ready to go .. more will follow
-
-
+Currently KingPages, KingText and KingCategory are ready to go .. more will follow

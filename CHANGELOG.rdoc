@@ -2,7 +2,8 @@
 
 2011-11
 * rewrite KingPages
-* dropped unused classes
+* rewrite KingText
+* dropped unused classes & restructure code
 
 2011-07
 * started to rewrite king categories to new widgets structure

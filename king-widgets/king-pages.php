@@ -2,7 +2,7 @@
 /*
 Plugin Name: King Pages Widget
 Plugin URI: http://www.blog.mediaprojekte.de/cms-systeme/wordpress-plugins/wordpress-widget-king-pages/
-Description: Adds a sidebar Pages widget and lets users configure every aspect of the page menu.
+Description: A Pages menu widget with advanced settings.
 Author: Georg Leciejewski
 Version: 2.0
 Author URI: http://www.salesking.eu

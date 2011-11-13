@@ -135,11 +135,10 @@ class WidgetForm extends KForm {
     $opts['site_area_id']       = $new_opts["site_area_id"];
   }
   /**
-   * clean default fields comming from widget form submits. Directly changes
-   * the $options hash
+   * Output a widget and detect if it should be shown
    *
    * @param <Widget> $widget object
-   * @param <type> $args is an array of strings that help widgets to conform to
+   * @param <Array> $args is an array of strings that help widgets to conform to
    *  the active theme: before_widget, before_title, after_widget,
    *  and after_title are the array keys. Default tags: li and h2.
    * @param <Array> $opts - existing options
