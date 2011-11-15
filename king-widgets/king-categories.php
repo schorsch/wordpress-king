@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 Plugin Name: King Categories Widget
 Plugin URI: http://www.mediaprojekte.de/cms-systeme/wordpress/wordpress-widget-king-categories/
@@ -10,7 +10,7 @@ Author URI: http://www.salesking.eu
 
 /*
     Copyright 2006-2012  Georg Leciejewski
- 
+
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
@@ -85,7 +85,7 @@ class WP_Widget_King_Categories extends WP_Widget {
   } #end update
 
   /**
-  * Output the widgets settings form 
+  * Output the widgets settings form
   */
   function form( $opts ) {
     //get default settings
@@ -119,7 +119,7 @@ class WP_Widget_King_Categories extends WP_Widget {
       'descr' => __('Show post counts', 'widgetKing'),
       'title' => __('Show number of posts in category', 'widgetKing'),
       'val'   => $opts['show_count'] ));
-    
+
     #show empty
     echo $f->checkbox(array(
       'name'  => $this->get_field_name('hide_empty'),
